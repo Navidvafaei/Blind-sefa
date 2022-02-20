@@ -19,8 +19,8 @@ Since we should compute encryption two times we use **faultee** parameter; when 
 ```
 function [key_col,cipherc,cipherf]=regularfault(sample_t,key_t,fb)
 key_col=cell(1,1000);
-cipherc=zeros(16,15000,100);
-cipherf=zeros(16,15000,100);
+cipherc=zeros(16,sample_t,,key_t);
+cipherf=zeros(16,sample_t,,key_t);
 key_n=0;
     while key_n<key_t
         key(1,1)=round(rand*255)  ;
@@ -136,13 +136,57 @@ temp_joint=re_t;
 end
 
 ```
+**Key_col** is hexadecimal, it will change to integer value and denoted as **key_base**
+
+correct ciphertext and fault ciphertext should change to HW. 
+```
+HW_c=zeros(16,sample_t,key_t);
+HW_f=zeros(16,sample_t,key_t);
+for i=1:key_t
+    for j=1:sample_t
+        for z=1:16
+            HW_c(z,j,i)=sum(de2bi(cipherc(z,j,i)));
+            HW_f(z,j,i)=sum(de2bi(cipherf(z,j,i)));
+        end
+    end
+end
+```
+Then the HW should be change to noisy one. 
+
+**L7** is denoted as noisy HW of correct ciphertext with variance of 0.7
+
+**L15** is denoted as noisy HW of correct ciphertext with variance of 1.5
+
+**Lf7** is denoted as noisy HW of correct ciphertext with variance of 0.7
+
+**Lf15** is denoted as noisy HW of faulty ciphertext with variance of 1.5
+
+All of the above paramteres have three indexes. For example **L7(i,s,t)**
 
 
+```
+variance=1.5;
+W = sqrt(variance).*randn(size(HW_c)); %Gaussian white noise W
+L15 =round(HW_c + W);
+W = sqrt(variance).*randn(size(HW_f));
+Lf15 =round(HW_f + W);
+variance=0.7;
+W = sqrt(variance).*randn(size(HW_c)); %Gaussian white noise W
+L7 = round(HW_c + W);
+W = sqrt(variance).*randn(size(HW_f));
+Lf7 = round(HW_f + W);
+Lf15(Lf15<0)=0;
+Lf15(Lf15>8)=8;
+L7(L7<0)=0;
+L7(L7>8)=8;
+L15(L15<0)=0;
+L15(L15>8)=8;
+Lf7(Lf7<0)=0;
+Lf7(Lf7>8)=8;
+```
+now here we are going to use maximum likelihood to recover the key. 
 
-
-
-
-
+First initialize
 ```
 key_t=100;%number of different keys that might attacker consider
 sample_t=35000;
@@ -157,14 +201,12 @@ PR_t7=zeros(key_t,sample_t);
 PR_t15=zeros(key_t,sample_t);
 MA_joint_T15=zeros(key_t,sample_t);
 MA_joint_T7=zeros(key_t,sample_t);
-
-
-
-
 samp=100;
 
+```
+Then here We can calculate the average of key's rank for desired number!! here I calculate for 10 keys out of key_t number
 
-
+```
 for key_n=1:10
     ni=0;
     ne=0;
@@ -179,6 +221,8 @@ for key_n=1:10
     joint_e15=zeros(256,1);
     Ma_joint7=zeros(256,sample_t);
     joint_e7=zeros(256,1);
+```
+```
     for j=1:35000
         PR_s=zeros(9,256);
         PR_s15=zeros(9,256);
@@ -226,11 +270,11 @@ for key_n=1:10
                      elseif h==9
                         PR_e15(i)=1;
                     end
-                    if  HW_f7(1,j,key_n)>=0 && HW_f7(1,j,key_n)<9
-                        PR_e_f7(i)=normpdf(((HW_f7(1,j,key_n))),h-1,0.7)*(s_e_f(i,h)*1/256)+PR_e_f7(i);
+                    if  Lf7(1,j,key_n)>=0 && Lf7(1,j,key_n)<9
+                        PR_e_f7(i)=normpdf(((Lf7(1,j,key_n))),h-1,0.7)*(s_e_f(i,h)*1/256)+PR_e_f7(i);
                         if L7(1,j,key_n)>=0 && L7(1,j,key_n)<9
                             for h2=1:9
-                                  joint_e7(i,1)=normpdf(((L7(1,j,key_n))),h2-1,0.7)*normpdf(((HW_f7(1,j,key_n))),h-1,0.7)*(s_e_tf(i,h2,h)*1/256*1/256)+joint_e7(i,1);
+                                  joint_e7(i,1)=normpdf(((L7(1,j,key_n))),h2-1,0.7)*normpdf(((Lf7(1,j,key_n))),h-1,0.7)*(s_e_tf(i,h2,h)*1/256*1/256)+joint_e7(i,1);
                             end
                         elseif h==9
                             joint_e7(i,1)=1;
@@ -239,11 +283,11 @@ for key_n=1:10
                         PR_e_f7(i)=1;
                         joint_e7(i,1)=1;
                     end
-                    if HW_f15(1,j,key_n)>=0 && HW_f15(1,j,key_n)<9
-                        PR_e_f15(i)=normpdf(((HW_f15(1,j,key_n))),h-1,1.5)*(s_e_f(i,h)*1/256)+PR_e_f15(i);
+                    if Lf15(1,j,key_n)>=0 && Lf15(1,j,key_n)<9
+                        PR_e_f15(i)=normpdf(((Lf15(1,j,key_n))),h-1,1.5)*(s_e_f(i,h)*1/256)+PR_e_f15(i);
                         if L15(1,j,key_n)>=0 && L15(1,j,key_n)<9
                             for h2=1:9
-                                  joint_e15(i,1)=normpdf(((L15(1,j,key_n))),h2-1,1.5)*normpdf(((HW_f15(1,j,key_n))),h-1,1.5)*(s_e_tf(i,h2,h)*1/256*1/256)+joint_e15(i,1);
+                                  joint_e15(i,1)=normpdf(((L15(1,j,key_n))),h2-1,1.5)*normpdf(((Lf15(1,j,key_n))),h-1,1.5)*(s_e_tf(i,h2,h)*1/256*1/256)+joint_e15(i,1);
                             end
                         elseif h==9
                             joint_e15(i,1)=1;
@@ -272,9 +316,6 @@ for key_n=1:10
         end
         if sample==j
            sample=sample+samp;
-%             PR_s=PR_i7.*PR_e_f; 
-%             PR_s15=PR_i5.*PR_e_f5;
-%             PR_s7=PR_i7.*PR_e_f7;
             PR_i_t15(key_n,j/samp)=sum(Ma_i_t15(key_base(key_n)+1,ni)<=Ma_i_t15(:,ni));
             PR_e_t15(key_n,j/samp)=sum(Ma_e_t15(key_base(key_n)+1,ne)<=Ma_e_t15(:,ne));
             PR_e_t_f15(key_n,j/samp)=sum(Ma_e_tf15(key_base(key_n)+1,ne)<=Ma_e_tf15(:,ne));
@@ -283,9 +324,6 @@ for key_n=1:10
             PR_e_t_f7(key_n,j/samp)=sum(Ma_e_tf7(key_base(key_n)+1,ne)<=Ma_e_tf7(:,ne));
             MA_joint_T15(key_n,j/samp)=sum(Ma_joint15(key_base(key_n)+1,ne)<=Ma_joint15(:,ne));
             MA_joint_T7(key_n,j/samp)=sum(Ma_joint7(key_base(key_n)+1,ne)<=Ma_joint7(:,ne));
-%             PR_t(key_n,j/samp)=sum(Ma_e_t15(key_base(key_n)+1,j)<=Ma_i_t15(:,j));
-%             PR_t7(key_n,j/samp)=sum(Ma_e_t15(key_base(key_n)+1,j)<=Ma_i_t15(:,j));
-%             PR_t15(key_n,j/samp)=sum(Ma_e_t15(key_base(key_n)+1,j)<=Ma_i_t15(:,j));
         end
     end
 end
@@ -320,7 +358,19 @@ plot(x,mean(MA_joint_T15(key_s:key_n,1:(sample_t/samp))),'LineWidth',1)
 
 hold off
 legend('sefa','sefaf','sifa','MaximumLintsec')
-% legend('sefa','sefaf','sifa','sefa15','sefa15f','sifa15','sefa7','sefa7f','sifa7')
+
+```
+
+
+
+
+
+
+
+
+
+
+
 ```
 
 
