@@ -398,11 +398,8 @@ y = normpdf(x,mu,sigma) returns the pdf of the normal distribution with mean mu 
 
 ![image](https://user-images.githubusercontent.com/30938963/154865321-b368e5b5-23b2-4fa8-9723-f01a30f62c19.png)
 
-So We can recover the Key when The HW  is noiseless for **fb=4** Here intersect is using for joint distribution SEFAF is using for HW of Faulty
+So We can recover the Key when The HW  is noiseless for **fb=2** Here intersect is using for joint distribution SEFAF is using for HW of Faulty
 
-![image](https://user-images.githubusercontent.com/30938963/154866101-ffa24125-5cef-485d-bb07-aec515ed2def.png)
-
-And also for **fb=2**
 
 ![image](https://user-images.githubusercontent.com/30938963/154866149-65c12a0e-3fc6-49db-b492-5039f51280f3.png)
 
