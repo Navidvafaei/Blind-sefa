@@ -1,4 +1,17 @@
 # Blind-sefa
+First of all we should create cipher with a faulty value:
+```
+ faultvalue=bitxor((256-(2^fb)),round(rand*((2^fb)-1)));
+```
+This fault value will be bitand in the last round of encryption with the following code:
+```
+    if i_round==9
+        if (faultee>0)
+            state(1,1)=bitand(state(1,1),faultvalue);
+        end;
+    end
+```
+Since we should compute encryption two times we use faultee parameter; when a faultee is more than 1 encryption is faultee.
 
 ```
 key_t=100;%number of different keys that might attacker consider
@@ -14,15 +27,7 @@ PR_t7=zeros(key_t,sample_t);
 PR_t15=zeros(key_t,sample_t);
 MA_joint_T15=zeros(key_t,sample_t);
 MA_joint_T7=zeros(key_t,sample_t);
-% data_d_h_i=zeros(key_t,9);
-% data_d_h_i5=zeros(key_t,9);
-% data_d_h_i7=zeros(key_t,9);
-% data_d_h_e=zeros(key_t,9);
-% data_d_h_e5=zeros(key_t,9);
-% data_d_h_e7=zeros(key_t,9);
-% data_d_h_e_f=zeros(key_t,9);
-% data_d_h_ef5=zeros(key_t,9);
-% data_d_h_ef7=zeros(key_t,9);
+
 
 
 
