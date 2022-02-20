@@ -74,9 +74,13 @@ key_n=0;
 end
 ```
 Then create a template by the following function for the attack
+
 **temp_i** is denoted for ineffective template
+
 **temp_e** is denoted for effective template when output ciphertext is correct
+
 **temp_e_f** is denoted for effective template when output ciphertext is faulty
+
 **temp_joint** is used for a joint of effective fault for both correct and faulty ciphertext
 
 ```
