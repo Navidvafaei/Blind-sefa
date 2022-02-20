@@ -11,10 +11,11 @@ This fault value will be bitand in the last round of encryption with the followi
         end;
     end
 ```
-Since we should compute encryption two times we use faultee parameter; when a faultee is more than 1 encryption is faultee.
+Since we should compute encryption two times we use **faultee** parameter; when a **faultee** is more than 1 encryption is **faultee**.
 
-<span style="color: green"> We use regularfault function to create faulty and non faulty ciphertext: </span>
-this
+ We use **regularfault** function to create faulty and non faulty ciphertext.
+ 
+ **Key_col** is denoted as an array of different keys.
 ```
 function [key_col,cipherc,cipherf]=regularfault(sample_t,key_t,fb)
 key_col=cell(1,1000);
@@ -72,8 +73,65 @@ key_n=0;
     end
 end
 ```
+Then create a template by the following function for the attack
+**temp_i** is denoted for ineffective template
+**temp_e** is denoted for effective template when output ciphertext is correct
+**temp_e_f** is denoted for effective template when output ciphertext is faulty
+**temp_joint** is used for a joint of effective fault for both correct and faulty ciphertext
 
+```
+function[temp_i,temp_e,temp_e_f,temp_joint]=template(fb)
+[s_box,~] = s_box_gen (1);
+temp_i=zeros(2^(fb),256,256,2);
+temp_e=zeros(2^(fb),256,256,2);
+temp_h_e=zeros(9,256,2);
+temp_h_e_f=zeros(9,256,2);
+temp_h_i=zeros(9,256,2);
+temp_h_i_f=zeros(9,256,2);
+temp_h_ef=zeros(256,9,9);
+for key=1:256
+    for inp=1:256
+        for i=1:2^(fb)
+            faultvalue=bitxor((256-(2^fb)),((i-1)));
+            s_out_f=sub_bytes(bitand(faultvalue,inp-1),s_box);
+            s_out=sub_bytes(inp-1,s_box);
+            if  s_out_f==s_out
+                temp_i(i,key,inp,1)=bitxor(s_out,key-1);
+                temp_h_i(sum(de2bi(temp_i(i,key,inp,1))>0)+1,key,1)=temp_h_i(sum(de2bi(temp_i(i,key,inp,1))>0)+1,key,1)+1;
+                temp_h_i(sum(de2bi(inp))+1,key,2)=temp_h_i(sum(de2bi(inp-1))+1,key,2)+1;
+                temp_i(i,key,inp,2)=bitxor(s_out_f,key-1);
+                temp_h_i_f(sum(de2bi(temp_i(i,key,inp,2))>0)+1,key,1)=temp_h_i(sum(de2bi(temp_i(i,key,inp,2))>0)+1,key,1)+1;
+                temp_h_i_f(sum(de2bi(bitxor(faultvalue,inp-1)))+1,key,2)=temp_h_i_f(sum(de2bi(bitxor(faultvalue,inp-1)))+1,key,2)+1;
+            else
+                temp_e(i,key,inp,1)=bitxor(s_out,key-1);
+                temp_h_e(sum(de2bi(temp_e(i,key,inp,1))>0)+1,key,1)=temp_h_e(sum(de2bi(temp_e(i,key,inp,1))>0)+1,key,1)+1;
+                temp_h_e(sum(de2bi(inp))+1,key,2)=temp_h_e(sum(de2bi(inp-1))+1,key,2)+1;
+                temp_e(i,key,inp,2)=bitxor(s_out_f,key-1);
+                temp_h_e_f(sum(de2bi(temp_e(i,key,inp,2))>0)+1,key,1)=temp_h_e_f(sum(de2bi(temp_e(i,key,inp,2))>0)+1,key,1)+1;
+                temp_h_e_f(sum(de2bi(bitxor(faultvalue,inp-1)))+1,key,2)=temp_h_e_f(sum(de2bi(bitxor(faultvalue,inp-1)))+1,key,2)+1;
+                temp_h_ef(key,sum(de2bi(temp_e(i,key,inp,1))>0)+1,sum(de2bi(temp_e(i,key,inp,2))>0)+1)= temp_h_ef(key,sum(de2bi(temp_e(i,key,inp,1))>0)+1,sum(de2bi(temp_e(i,key,inp,2))>0)+1)+1;
+            end
+        end
+    end
+end
+re=temp_h_e_f(:,:,1);
+re_check=temp_h_e(:,:,1);
+ri=temp_h_i(:,:,1);
+re_t=temp_h_ef;
+for i=1:256
+re(:,i)=re(:,i)/sum(re(:,i));
+ri(:,i)=ri(:,i)/sum(ri(:,i));
+re_check(:,i)=re_check(:,i)/sum(re_check(:,i));
+% re_t(:,i)=re(:,i);
+end
+temp_i=reshape(ri',256,9);
+temp_e=reshape(re_check',256,9);
+temp_e_f=reshape(re',256,9);
+temp_joint=re_t;
 
+end
+
+```
 
 
 
