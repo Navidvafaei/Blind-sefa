@@ -204,7 +204,8 @@ MA_joint_T7=zeros(key_t,sample_t);
 samp=100;
 
 ```
-Then here We can calculate the average of key's rank for desired number!! here I calculate for 10 keys out of key_t number
+Then here We can calculate the average of key's rank for desired number!! here I calculate for 10 keys out of key_t number.
+
 
 ```
 for key_n=1:10
@@ -221,8 +222,6 @@ for key_n=1:10
     joint_e15=zeros(256,1);
     Ma_joint7=zeros(256,sample_t);
     joint_e7=zeros(256,1);
-```
-```
     for j=1:35000
         PR_s=zeros(9,256);
         PR_s15=zeros(9,256);
@@ -238,12 +237,12 @@ for key_n=1:10
             for i=1:256
                 for h=1:9
                     if  L7(1,j,key_n)>=0 && L7(1,j,key_n)<9
-                        PR_i7(i)=normpdf(((L7(1,j,key_n))),h-1,0.7)*(s_i(i,h)*1/256)+PR_i7(i);%*(1/sum(s_i(:,h))))
+                        PR_i7(i)=normpdf(((L7(1,j,key_n))),h-1,0.7)*(temp_i(i,h)*1/256)+PR_i7(i);
                     elseif h==9
                         PR_i7(i)=1;
                     end
                     if L15(1,j,key_n)>=0 && L15(1,j,key_n)<9
-                        PR_i15(i)=normpdf(((L15(1,j,key_n))),h-1,1.5)*(s_i(i,h)*1/256)+PR_i15(i);
+                        PR_i15(i)=normpdf(((L15(1,j,key_n))),h-1,1.5)*(temp_i(i,h)*1/256)+PR_i15(i);
                     elseif h==9
                         PR_i15(i)=1;
                     end
@@ -261,20 +260,20 @@ for key_n=1:10
             for i=1:256
                 for h=1:9
                     if  L7(1,j,key_n)>=0 && L7(1,j,key_n)<9
-                        PR_e7(i)=normpdf(((L7(1,j,key_n))),h-1,0.7)*(s_e(i,h)*1/256)+PR_e7(i);
+                        PR_e7(i)=normpdf(((L7(1,j,key_n))),h-1,0.7)*(temp_e(i,h)*1/256)+PR_e7(i);
                     elseif h==9
                         PR_e7(i)=1;
                     end
                     if L15(1,j,key_n)>=0 && L15(1,j,key_n)<9
-                        PR_e15(i)=normpdf(((L15(1,j,key_n))),h-1,1.5)*(s_e(i,h)*1/256)+PR_e15(i);
+                        PR_e15(i)=normpdf(((L15(1,j,key_n))),h-1,1.5)*(temp_e(i,h)*1/256)+PR_e15(i);
                      elseif h==9
                         PR_e15(i)=1;
                     end
                     if  Lf7(1,j,key_n)>=0 && Lf7(1,j,key_n)<9
-                        PR_e_f7(i)=normpdf(((Lf7(1,j,key_n))),h-1,0.7)*(s_e_f(i,h)*1/256)+PR_e_f7(i);
+                        PR_e_f7(i)=normpdf(((Lf7(1,j,key_n))),h-1,0.7)*(temp_e_f(i,h)*1/256)+PR_e_f7(i);
                         if L7(1,j,key_n)>=0 && L7(1,j,key_n)<9
                             for h2=1:9
-                                  joint_e7(i,1)=normpdf(((L7(1,j,key_n))),h2-1,0.7)*normpdf(((Lf7(1,j,key_n))),h-1,0.7)*(s_e_tf(i,h2,h)*1/256*1/256)+joint_e7(i,1);
+                                  joint_e7(i,1)=normpdf(((L7(1,j,key_n))),h2-1,0.7)*normpdf(((Lf7(1,j,key_n))),h-1,0.7)*(temp_joint(i,h2,h)*1/256*1/256)+joint_e7(i,1);
                             end
                         elseif h==9
                             joint_e7(i,1)=1;
@@ -284,10 +283,10 @@ for key_n=1:10
                         joint_e7(i,1)=1;
                     end
                     if Lf15(1,j,key_n)>=0 && Lf15(1,j,key_n)<9
-                        PR_e_f15(i)=normpdf(((Lf15(1,j,key_n))),h-1,1.5)*(s_e_f(i,h)*1/256)+PR_e_f15(i);
+                        PR_e_f15(i)=normpdf(((Lf15(1,j,key_n))),h-1,1.5)*(temp_e_f(i,h)*1/256)+PR_e_f15(i);
                         if L15(1,j,key_n)>=0 && L15(1,j,key_n)<9
                             for h2=1:9
-                                  joint_e15(i,1)=normpdf(((L15(1,j,key_n))),h2-1,1.5)*normpdf(((Lf15(1,j,key_n))),h-1,1.5)*(s_e_tf(i,h2,h)*1/256*1/256)+joint_e15(i,1);
+                                  joint_e15(i,1)=normpdf(((L15(1,j,key_n))),h2-1,1.5)*normpdf(((Lf15(1,j,key_n))),h-1,1.5)*(temp(i,h2,h)*1/256*1/256)+joint_e15(i,1);
                             end
                         elseif h==9
                             joint_e15(i,1)=1;
@@ -361,19 +360,43 @@ legend('sefa','sefaf','sifa','MaximumLintsec')
 
 ```
 
+For the sake of clarity we consider a part of code here.
 
-
-
-
-
-
-
-
+```
+if isequal(cipherc(:,j,key_n),cipherf(:,j,key_n))
+            ni=ni+1;
+            for i=1:256
+                for h=1:9
+                    if  L7(1,j,key_n)>=0 && L7(1,j,key_n)<9
+                        PR_i7(i)=normpdf(((L7(1,j,key_n))),h-1,0.7)*(temp_i(i,h)*1/256)+PR_i7(i);
+                    elseif h==9
+                        PR_i7(i)=1;
+                    end
+                    if L15(1,j,key_n)>=0 && L15(1,j,key_n)<9
+                        PR_i15(i)=normpdf(((L15(1,j,key_n))),h-1,1.5)*(temp_i(i,h)*1/256)+PR_i15(i);
+                    elseif h==9
+                        PR_i15(i)=1;
+                    end
+                end
+            end
+            if ni==1
+                Ma_i_t15(:,ni)=log(PR_i15);
+                Ma_i_t7(:,ni)=log(PR_i7);
+            else
+                Ma_i_t15(:,ni)=log(PR_i15(:))+Ma_i_t15(:,ni-1);
+                Ma_i_t7(:,ni)=log(PR_i7(:))+Ma_i_t7(:,ni-1);
+            end
 
 
 ```
+How we consider profiling a noisy side channel?
+Here is the key:
+```
+PR_i7(i)=normpdf(((L7(1,j,key_n))),h-1,0.7)*(temp_i(i,h)*1/256)+PR_i7(i);
+```
+y = normpdf(x,mu,sigma) returns the pdf of the normal distribution with mean mu and standard deviation sigma, evaluated at the values in x.
 
-
+![image](https://user-images.githubusercontent.com/30938963/154865321-b368e5b5-23b2-4fa8-9723-f01a30f62c19.png)
 
 
 
