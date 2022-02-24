@@ -216,8 +216,13 @@ Pr_F15=zeros(key_t,sample_t);
 Pr_F7=zeros(key_t,sample_t);
 Pr_joint15=zeros(key_t,sample_t);
 Pr_joint7=zeros(key_t,sample_t);
+
+
+
 samp=1000;
-for key_n=1:10
+
+
+for key_n=3:40
     ni=0;
     ne=0;
     sample=1000;
@@ -230,66 +235,66 @@ for key_n=1:10
     Ma_joint15=zeros(256,sample_t);
     Ma_joint7=zeros(256,sample_t);
     for j=1:35000
-        Pr_i7=zeros(1,256);
-        Pr_i15=zeros(1,256);
-        Pr_e15=zeros(1,256);
-        Pr_e7=zeros(1,256);
-        Pr_e_f7=zeros(1,256);
-        Pr_e_f15=zeros(1,256);
-        joint_e7=zeros(256,1);
-        joint_e15=zeros(256,1);
+        S_i7=zeros(1,256);
+        S_i15=zeros(1,256);
+        S_e15=zeros(1,256);
+        S_e7=zeros(1,256);
+        S_F7=zeros(1,256);
+        S_F15=zeros(1,256);
+        S_joint7=zeros(256,1);
+        S_joint15=zeros(256,1);
         if isequal(cipherc(:,j,key_n),cipherf(:,j,key_n))
             ni=ni+1;
             for i=1:256
                 for h=1:9
-                        Pr_i7(i)=normpdf(((L7(1,j,key_n))),h-1,0.7)*(s_i(i,h)*1/256)+Pr_i7(i);
-                        Pr_i15(i)=normpdf(((L15(1,j,key_n))),h-1,1.5)*(s_i(i,h)*1/256)+Pr_i15(i);
+                        S_i7(i)=normpdf(((L7(1,j,key_n))),h-1,0.7)*(s_i(i,h)*1/256)+S_i7(i);
+                        S_i15(i)=normpdf(((L15(1,j,key_n))),h-1,1.5)*(s_i(i,h)*1/256)+S_i15(i);
                 end
             end
             if ni==1
-                Ma_inef15(:,ni)=log(Pr_i15);
-                Ma_inef7(:,ni)=log(Pr_i7);
+                Ma_inef15(:,ni)=log(S_i15);
+                Ma_inef7(:,ni)=log(S_i7);
             else
-                Ma_inef15(:,ni)=log(Pr_i15(:))+Ma_inef15(:,ni-1);
-                Ma_inef7(:,ni)=log(Pr_i7(:))+Ma_inef7(:,ni-1);
+                Ma_inef15(:,ni)=log(S_i15(:))+Ma_inef15(:,ni-1);
+                Ma_inef7(:,ni)=log(S_i7(:))+Ma_inef7(:,ni-1);
             end
         else
             ne=ne+1;
             for i=1:256
                 for h=1:9
-                        Pr_e7(i)=normpdf(((L7(1,j,key_n))),h-1,0.7)*(s_e(i,h)*1/256)+Pr_e7(i);
-                        Pr_e15(i)=normpdf(((L15(1,j,key_n))),h-1,1.5)*(s_e(i,h)*1/256)+Pr_e15(i);
-                        Pr_e_f7(i)=normpdf(((Lf7(1,j,key_n))),h-1,0.7)*(s_e_f(i,h)*1/256)+Pr_e_f7(i);
+                        S_e7(i)=normpdf(((L7(1,j,key_n))),h-1,0.7)*(s_e(i,h)*1/256)+S_e7(i);
+                        S_e15(i)=normpdf(((L15(1,j,key_n))),h-1,1.5)*(s_e(i,h)*1/256)+S_e15(i);
+                        S_F7(i)=normpdf(((Lf7(1,j,key_n))),h-1,0.7)*(s_e_f(i,h)*1/256)+S_F7(i);
                             for h2=1:9
-                                  joint_e7(i,1)=normpdf(((L7(1,j,key_n))),h2-1,0.7)*normpdf(((Lf7(1,j,key_n))),h-1,0.7)*(s_e_tf(i,h2,h)*1/256*1/256)+joint_e7(i,1);
+                                  S_joint7(i,1)=normpdf(((L7(1,j,key_n))),h2-1,0.7)*normpdf(((Lf7(1,j,key_n))),h-1,0.7)*(s_e_tf(i,h2,h)*1/256*1/256)+S_joint7(i,1);
                             end
-                        Pr_e_f15(i)=normpdf(((Lf15(1,j,key_n))),h-1,1.5)*(s_e_f(i,h)*1/256)+Pr_e_f15(i);
+                        S_F15(i)=normpdf(((Lf15(1,j,key_n))),h-1,1.5)*(s_e_f(i,h)*1/256)+S_F15(i);
                             for h2=1:9
-                                  joint_e15(i,1)=normpdf(((L15(1,j,key_n))),h2-1,1.5)*normpdf(((Lf15(1,j,key_n))),h-1,1.5)*(s_e_tf(i,h2,h)*1/256*1/256)+joint_e15(i,1);
+                                  S_joint15(i,1)=normpdf(((L15(1,j,key_n))),h2-1,1.5)*normpdf(((Lf15(1,j,key_n))),h-1,1.5)*(s_e_tf(i,h2,h)*1/256*1/256)+S_joint15(i,1);
                             end
                 end
             end
             if ne==1
-                Ma_ef15(:,ne)=log(Pr_e15);
-                Ma_ef7(:,ne)=log(Pr_e7);
-                Ma_eff15(:,ne)=log(Pr_e_f15);
-                Ma_eff7(:,ne)=log(Pr_e_f7);
-                Ma_joint15(:,ne)=log(joint_e15);
-                Ma_joint7(:,ne)=log(joint_e7);
+                Ma_ef15(:,ne)=log(S_e15);
+                Ma_ef7(:,ne)=log(S_e7);
+                Ma_eff15(:,ne)=log(S_F15);
+                Ma_eff7(:,ne)=log(S_F7);
+                Ma_joint15(:,ne)=log(S_joint15);
+                Ma_joint7(:,ne)=log(S_joint7);
             else
-                Ma_ef15(:,ne)=log(Pr_e15(:))+Ma_ef15(:,ne-1);
-                Ma_ef7(:,ne)=log(Pr_e7(:))+Ma_ef7(:,ne-1);
-                Ma_eff15(:,ne)=log(Pr_e_f15(:))+Ma_eff15(:,ne-1);
-                Ma_eff7(:,ne)=log(Pr_e_f7(:))+Ma_eff7(:,ne-1);
-                Ma_joint7(:,ne)=log(joint_e7)+Ma_joint7(:,ne-1);
-                Ma_joint15(:,ne)=log(joint_e15)+Ma_joint15(:,ne-1);
+                Ma_ef15(:,ne)=log(S_e15(:))+Ma_ef15(:,ne-1);
+                Ma_ef7(:,ne)=log(S_e7(:))+Ma_ef7(:,ne-1);
+                Ma_eff15(:,ne)=log(S_F15(:))+Ma_eff15(:,ne-1);
+                Ma_eff7(:,ne)=log(S_F7(:))+Ma_eff7(:,ne-1);
+                Ma_joint7(:,ne)=log(S_joint7)+Ma_joint7(:,ne-1);
+                Ma_joint15(:,ne)=log(S_joint15)+Ma_joint15(:,ne-1);
             end
         end
         if sample==j
            sample=sample+samp;
-%             Pr_s=Pr_i7.*Pr_e_f; 
+%             Pr_s=S_i7.*Pr_e_f; 
 %             Pr_s15=Pr_i5.*Pr_e_f5;
-%             Pr_s7=Pr_i7.*Pr_e_f7;
+%             Pr_s7=S_i7.*S_F7;
             Pr_inef15(key_n,j/samp)=sum(Ma_inef15(key_base(key_n)+1,ni)<=Ma_inef15(:,ni));
             Pr_ef15(key_n,j/samp)=sum(Ma_ef15(key_base(key_n)+1,ne)<=Ma_ef15(:,ne));
             Pr_F15(key_n,j/samp)=sum(Ma_eff15(key_base(key_n)+1,ne)<=Ma_eff15(:,ne));
@@ -334,26 +339,26 @@ hold off
 legend('sefa','sefaf','sifa','MaximumLintsec')
 % legend('sefa','sefaf','sifa','sefa15','sefa15f','sifa15','sefa7','sefa7f','sifa7')
 
+
 ```
 
 For the sake of clarity we consider a part of code here.
 
 ```
-
-        if isequal(cipherc(:,j,key_n),cipherf(:,j,key_n))
+if isequal(cipherc(:,j,key_n),cipherf(:,j,key_n))
             ni=ni+1;
             for i=1:256
                 for h=1:9
-                        Pr_i7(i)=normpdf(((L7(1,j,key_n))),h-1,0.7)*(s_i(i,h)*1/256)+Pr_i7(i);
-                        Pr_i15(i)=normpdf(((L15(1,j,key_n))),h-1,1.5)*(s_i(i,h)*1/256)+Pr_i15(i);
+                        S_i7(i)=normpdf(((L7(1,j,key_n))),h-1,0.7)*(s_i(i,h)*1/256)+S_i7(i);
+                        S_i15(i)=normpdf(((L15(1,j,key_n))),h-1,1.5)*(s_i(i,h)*1/256)+S_i15(i);
                 end
             end
             if ni==1
-                Ma_inef15(:,ni)=log(Pr_i15);
-                Ma_inef7(:,ni)=log(Pr_i7);
+                Ma_inef15(:,ni)=log(S_i15);
+                Ma_inef7(:,ni)=log(S_i7);
             else
-                Ma_inef15(:,ni)=log(Pr_i15(:))+Ma_inef15(:,ni-1);
-                Ma_inef7(:,ni)=log(Pr_i7(:))+Ma_inef7(:,ni-1);
+                Ma_inef15(:,ni)=log(S_i15(:))+Ma_inef15(:,ni-1);
+                Ma_inef7(:,ni)=log(S_i7(:))+Ma_inef7(:,ni-1);
             end
 
 ```
