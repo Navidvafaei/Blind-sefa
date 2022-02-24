@@ -216,13 +216,8 @@ Pr_F15=zeros(key_t,sample_t);
 Pr_F7=zeros(key_t,sample_t);
 Pr_joint15=zeros(key_t,sample_t);
 Pr_joint7=zeros(key_t,sample_t);
-
-
-
 samp=1000;
-
-
-for key_n=3:40
+for key_n=1:10
     ni=0;
     ne=0;
     sample=1000;
