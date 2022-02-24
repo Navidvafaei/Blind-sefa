@@ -208,21 +208,7 @@ Then here We can calculate the average of key's rank for desired number!! here I
 
 
 ```
-Pr_inef15=zeros(key_t,sample_t);
-Pr_inef7=zeros(key_t,sample_t);
-Pr_ef15=zeros(key_t,sample_t);
-Pr_ef7=zeros(key_t,sample_t);
-Pr_F15=zeros(key_t,sample_t);
-Pr_F7=zeros(key_t,sample_t);
-Pr_joint15=zeros(key_t,sample_t);
-Pr_joint7=zeros(key_t,sample_t);
-
-
-
-samp=1000;
-
-
-for key_n=3:40
+for key_n=1:10
     ni=0;
     ne=0;
     sample=1000;
@@ -247,8 +233,8 @@ for key_n=3:40
             ni=ni+1;
             for i=1:256
                 for h=1:9
-                        S_i7(i)=normpdf(((L7(1,j,key_n))),h-1,0.7)*(s_i(i,h)*1/256)+S_i7(i);
-                        S_i15(i)=normpdf(((L15(1,j,key_n))),h-1,1.5)*(s_i(i,h)*1/256)+S_i15(i);
+                        S_i7(i)=normpdf(((L7(1,j,key_n))),h-1,0.7)*(temp_i(i,h)*1/256)+S_i7(i);
+                        S_i15(i)=normpdf(((L15(1,j,key_n))),h-1,1.5)*(temp_i(i,h)*1/256)+S_i15(i);
                 end
             end
             if ni==1
@@ -262,15 +248,15 @@ for key_n=3:40
             ne=ne+1;
             for i=1:256
                 for h=1:9
-                        S_e7(i)=normpdf(((L7(1,j,key_n))),h-1,0.7)*(s_e(i,h)*1/256)+S_e7(i);
-                        S_e15(i)=normpdf(((L15(1,j,key_n))),h-1,1.5)*(s_e(i,h)*1/256)+S_e15(i);
-                        S_F7(i)=normpdf(((Lf7(1,j,key_n))),h-1,0.7)*(s_e_f(i,h)*1/256)+S_F7(i);
+                        S_e7(i)=normpdf(((L7(1,j,key_n))),h-1,0.7)*(temp_e(i,h)*1/256)+S_e7(i);
+                        S_e15(i)=normpdf(((L15(1,j,key_n))),h-1,1.5)*(temp_e(i,h)*1/256)+S_e15(i);
+                        S_F7(i)=normpdf(((Lf7(1,j,key_n))),h-1,0.7)*(temp_e_f(i,h)*1/256)+S_F7(i);
                             for h2=1:9
-                                  S_joint7(i,1)=normpdf(((L7(1,j,key_n))),h2-1,0.7)*normpdf(((Lf7(1,j,key_n))),h-1,0.7)*(s_e_tf(i,h2,h)*1/256*1/256)+S_joint7(i,1);
+                                  S_joint7(i,1)=normpdf(((L7(1,j,key_n))),h2-1,0.7)*normpdf(((Lf7(1,j,key_n))),h-1,0.7)*(temp_joint(i,h2,h)*1/256*1/256)+S_joint7(i,1);
                             end
                         S_F15(i)=normpdf(((Lf15(1,j,key_n))),h-1,1.5)*(s_e_f(i,h)*1/256)+S_F15(i);
                             for h2=1:9
-                                  S_joint15(i,1)=normpdf(((L15(1,j,key_n))),h2-1,1.5)*normpdf(((Lf15(1,j,key_n))),h-1,1.5)*(s_e_tf(i,h2,h)*1/256*1/256)+S_joint15(i,1);
+                                  S_joint15(i,1)=normpdf(((L15(1,j,key_n))),h2-1,1.5)*normpdf(((Lf15(1,j,key_n))),h-1,1.5)*(temp_joint(i,h2,h)*1/256*1/256)+S_joint15(i,1);
                             end
                 end
             end
@@ -300,9 +286,6 @@ for key_n=3:40
             Pr_F7(key_n,j/samp)=sum(Ma_eff7(key_base(key_n)+1,ne)<=Ma_eff7(:,ne));
             Pr_joint15(key_n,j/samp)=sum(Ma_joint15(key_base(key_n)+1,ne)<=Ma_joint15(:,ne));
             Pr_joint7(key_n,j/samp)=sum(Ma_joint7(key_base(key_n)+1,ne)<=Ma_joint7(:,ne));
-%             Pr_t(key_n,j/samp)=sum(Ma_ef15(key_base(key_n)+1,j)<=Ma_inef15(:,j));
-%             Pr_t7(key_n,j/samp)=sum(Ma_ef15(key_base(key_n)+1,j)<=Ma_inef15(:,j));
-%             Pr_t15(key_n,j/samp)=sum(Ma_ef15(key_base(key_n)+1,j)<=Ma_inef15(:,j));
         end
     end
 end
@@ -334,9 +317,6 @@ plot(x,mean(Pr_joint7(key_s:key_n,1:(sample_t/samp))),'LineWidth',1)
 
 hold off
 legend('sefa','sefaf','sifa','MaximumLintsec')
-% legend('sefa','sefaf','sifa','sefa15','sefa15f','sifa15','sefa7','sefa7f','sifa7')
-
-
 ```
 
 For the sake of clarity we consider a part of code here.
@@ -346,8 +326,8 @@ if isequal(cipherc(:,j,key_n),cipherf(:,j,key_n))
             ni=ni+1;
             for i=1:256
                 for h=1:9
-                        S_i7(i)=normpdf(((L7(1,j,key_n))),h-1,0.7)*(s_i(i,h)*1/256)+S_i7(i);
-                        S_i15(i)=normpdf(((L15(1,j,key_n))),h-1,1.5)*(s_i(i,h)*1/256)+S_i15(i);
+                        S_i7(i)=normpdf(((L7(1,j,key_n))),h-1,0.7)*(temp_i(i,h)*1/256)+S_i7(i);
+                        S_i15(i)=normpdf(((L15(1,j,key_n))),h-1,1.5)*(temp_i(i,h)*1/256)+S_i15(i);
                 end
             end
             if ni==1
