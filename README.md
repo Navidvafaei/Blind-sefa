@@ -364,7 +364,7 @@ if isequal(cipherc(:,j,key_n),cipherf(:,j,key_n))
 ```
 How we consider profiling a noisy side channel?
 
-![image](https://user-images.githubusercontent.com/30938963/154937549-7632ddc1-55de-498b-bd72-33f4b59f47ec.png)
+![image](https://user-images.githubusercontent.com/30938963/155497712-c1a2999f-ff04-45a1-8ac9-5fe2b7946123.png)
 
 Here is the key:
 ```
