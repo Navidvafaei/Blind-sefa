@@ -292,9 +292,6 @@ for key_n=3:40
         end
         if sample==j
            sample=sample+samp;
-%             Pr_s=S_i7.*Pr_e_f; 
-%             Pr_s15=Pr_i5.*Pr_e_f5;
-%             Pr_s7=S_i7.*S_F7;
             Pr_inef15(key_n,j/samp)=sum(Ma_inef15(key_base(key_n)+1,ni)<=Ma_inef15(:,ni));
             Pr_ef15(key_n,j/samp)=sum(Ma_ef15(key_base(key_n)+1,ne)<=Ma_ef15(:,ne));
             Pr_F15(key_n,j/samp)=sum(Ma_eff15(key_base(key_n)+1,ne)<=Ma_eff15(:,ne));
