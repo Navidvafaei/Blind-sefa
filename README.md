@@ -220,7 +220,7 @@ for key_n=1:10
     Ma_eff7=zeros(256,sample_t);
     Ma_joint15=zeros(256,sample_t);
     Ma_joint7=zeros(256,sample_t);
-    for j=1:35000
+    for j=1:sample_t
         S_i7=zeros(1,256);
         S_i15=zeros(1,256);
         S_e15=zeros(1,256);
@@ -233,8 +233,8 @@ for key_n=1:10
             ni=ni+1;
             for i=1:256
                 for h=1:9
-                        S_i7(i)=normpdf(((L7(1,j,key_n))),h-1,0.7)*(temp_i(i,h)*1/256)+S_i7(i);
-                        S_i15(i)=normpdf(((L15(1,j,key_n))),h-1,1.5)*(temp_i(i,h)*1/256)+S_i15(i);
+                        S_i7(i)=normpdf(((L7(1,j,key_n))),h-1,0.7)*(temp_ineff(i,h)*1/256)+S_i7(i);
+                        S_i15(i)=normpdf(((L15(1,j,key_n))),h-1,1.5)*(temp_ineff(i,h)*1/256)+S_i15(i);
                 end
             end
             if ni==1
@@ -248,16 +248,14 @@ for key_n=1:10
             ne=ne+1;
             for i=1:256
                 for h=1:9
-                        S_e7(i)=normpdf(((L7(1,j,key_n))),h-1,0.7)*(temp_e(i,h)*1/256)+S_e7(i);
-                        S_e15(i)=normpdf(((L15(1,j,key_n))),h-1,1.5)*(temp_e(i,h)*1/256)+S_e15(i);
-                        S_F7(i)=normpdf(((Lf7(1,j,key_n))),h-1,0.7)*(temp_e_f(i,h)*1/256)+S_F7(i);
-                            for h2=1:9
-                                  S_joint7(i,1)=normpdf(((L7(1,j,key_n))),h2-1,0.7)*normpdf(((Lf7(1,j,key_n))),h-1,0.7)*(temp_joint(i,h2,h)*1/256*1/256)+S_joint7(i,1);
-                            end
-                        S_F15(i)=normpdf(((Lf15(1,j,key_n))),h-1,1.5)*(s_e_f(i,h)*1/256)+S_F15(i);
-                            for h2=1:9
-                                  S_joint15(i,1)=normpdf(((L15(1,j,key_n))),h2-1,1.5)*normpdf(((Lf15(1,j,key_n))),h-1,1.5)*(temp_joint(i,h2,h)*1/256*1/256)+S_joint15(i,1);
-                            end
+                    S_e7(i)=normpdf(((L7(1,j,key_n))),h-1,0.7)*(temp_eff(i,h)*1/256)+S_e7(i);
+                    S_e15(i)=normpdf(((L15(1,j,key_n))),h-1,1.5)*(temp_eff(i,h)*1/256)+S_e15(i);
+                    S_F7(i)=normpdf(((Lf7(1,j,key_n))),h-1,0.7)*(temp_F(i,h)*1/256)+S_F7(i);
+                    S_F15(i)=normpdf(((Lf15(1,j,key_n))),h-1,1.5)*(temp_F(i,h)*1/256)+S_F15(i);
+                    for h2=1:9
+                          S_joint7(i,1)=normpdf(((L7(1,j,key_n))),h2-1,0.7)*normpdf(((Lf7(1,j,key_n))),h-1,0.7)*(temp_joint(i,h2,h)*1/256*1/256)+S_joint7(i,1);
+                          S_joint15(i,1)=normpdf(((L15(1,j,key_n))),h2-1,1.5)*normpdf(((Lf15(1,j,key_n))),h-1,1.5)*(temp_joint(i,h2,h)*1/256*1/256)+S_joint15(i,1);
+                    end
                 end
             end
             if ne==1
