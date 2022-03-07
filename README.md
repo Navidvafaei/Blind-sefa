@@ -204,6 +204,37 @@ MA_joint_T7=zeros(key_t,sample_t);
 samp=100;
 
 ```
+How we can calculate side channel profiling? we use the mean of output for the side channel attack
+
+
+![image](https://user-images.githubusercontent.com/30938963/156991164-21bd900b-4677-4e7b-a6dc-0c2f72777084.png)
+
+
+```
+
+mean_h15=zeros(1,9);
+mean_h7=zeros(1,9);
+mean_hf15=zeros(1,9);
+mean_hf7=zeros(1,9);
+
+for i=1:1
+    for j=1:20000
+        for key=2:40
+            mean_h15(1,HW_c(i,j,key)+1)=L15(i,j,key)+mean_h15(HW_c(i,j,key)+1);
+            mean_h7(1,HW_c(i,j,key)+1)=L7(i,j,key)+mean_h7(HW_c(i,j,key)+1);
+            mean_hf15(1,HW_f(i,j,key)+1)=Lf15(i,j,key)+mean_hf15(HW_f(i,j,key)+1);
+            mean_hf7(1,HW_f(i,j,key)+1)=Lf7(i,j,key)+mean_hf7(HW_f(i,j,key)+1);
+        end
+    end
+end
+ for h=1:9
+      mean_h15(1,h)=mean_h15(1,h)/sum(sum(HW_c(i,1:j,2:key)+1==h));
+      mean_h7(1,h)=mean_h7(1,h)/sum(sum((HW_c(i,1:j,2:key)+1==h)));
+      mean_hf15(1,h)=mean_hf15(1,h)/sum(sum(HW_f(i,1:j,2:key)+1==h));
+      mean_hf7(1,h)=mean_hf7(1,h)/sum(sum(HW_f(i,1:j,2:key)+1==h));
+ end
+
+```
 Then here We can calculate the average of key's rank for desired number!! here I calculate for 10 keys out of key_t number.
 
 
