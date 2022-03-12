@@ -4,10 +4,7 @@ load('s_box.mat');
 no_bits = 8;
 fb=2;%no.faulty bits
 sigma = 0.1;
-no_traces = 10;
-
-
-
+no_traces = 10000;
 range = 2^no_bits-1;
 
 K=0:range;
@@ -36,15 +33,15 @@ for k=K
             % compute the discrete part of the leakage function 
             faultvalue=bitxor((256-(2^fb)),f);
             b=bitand(a,faultvalue);
-            hc=Hamming(s_box((bitxor(a,k)+1)));
-            hf = Hamming(s_box((bitxor(b,k)+1)));
+            hc=Hamming(bitxor(s_box(a+1),k));
+            hf =Hamming(bitxor(s_box(b+1),k));
             % compute the joint distribution for every k
             if (b)==(a)
                 Distribution_Ineff(hf+1, k+1) = Distribution_Ineff(hf+1, k+1) + pr_uni;
             else
                 Distribution_Faulty(hf+1, k+1) = Distribution_Faulty(hf+1, k+1) + pr_uni;
                 Distribution_Eff(hc+1, k+1) = Distribution_Eff(hc+1, k+1) + pr_uni;
-                Distribution_joint( hc+1, hf+1, k+1) = Distribution_joint( hc+1, hf+1, k+1) + (pr_uni)^2;
+                Distribution_joint( hc+1, hf+1, k+1) = Distribution_joint( hc+1, hf+1, k+1) + (pr_uni);
             end
         end
     end
@@ -59,8 +56,8 @@ m = randi(range+1,no_traces,1)-1;
 Key = 10;
 fault_vector= bitxor((256-(2^fb)),randi(((2^fb)),no_traces,1)-1);
 m_faulty=bitand(m,fault_vector);
-c = reshape(s_box(bitxor(m, Key)+1),no_traces,1);
-c_faulty=reshape(s_box(bitxor(m_faulty, Key)+1),no_traces,1);
+c = reshape((bitxor(s_box(m+1), Key)),no_traces,1);
+c_faulty=reshape((bitxor(s_box(m_faulty+1), Key)),no_traces,1);
 
 
 % here linking the leakage to the hamming weight is straightforward
