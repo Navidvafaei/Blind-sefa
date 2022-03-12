@@ -32,7 +32,7 @@ Distribution_joint = zeros(cardA, cardB, cardK);
 
 for k=K
     for a=0:255
-        for f=0:2^(fb)
+        for f=0:2^(fb)-1
             % compute the discrete part of the leakage function 
             faultvalue=bitxor((256-(2^fb)),f);
             b=bitand(a,faultvalue);
@@ -57,7 +57,7 @@ end
 
 m = randi(range+1,no_traces,1)-1;
 Key = 10;
-fault_vector= bitxor((256-(2^fb)),randi(((2^fb)-1),no_traces,1)-1);
+fault_vector= bitxor((256-(2^fb)),randi(((2^fb)),no_traces,1)-1);
 m_faulty=bitand(m,fault_vector);
 c = reshape(s_box(bitxor(m, Key)+1),no_traces,1);
 c_faulty=reshape(s_box(bitxor(m_faulty, Key)+1),no_traces,1);
