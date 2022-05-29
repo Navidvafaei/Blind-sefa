@@ -196,12 +196,13 @@ end
 
 hold on
 plot(mean( Key_rank_ni(1:no_traces,:),2),'red','LineWidth',1)
-plot(mean (Key_rank_Eff(1:no_traces,:),2),'LineWidth',1)
-plot( mean (Key_rank_ne(1:no_traces,:),2),'green','LineWidth',1)
-plot( mean(Key_rank_nj(1:no_traces,:),2),'blue','LineWidth',1)
+% plot(mean (Key_rank_Eff(1:no_traces,:),2),'LineWidth',1)
+% plot( mean (Key_rank_ne(1:no_traces,:),2),'green','LineWidth',1)
+% plot( mean(Key_rank_nj(1:no_traces,:),2),'blue','LineWidth',1)
+plot( mean(Key_rank_nj_HD(1:no_traces,:),2),'blue','LineWidth',1)
 
-% % hold off
-% % legend('sifa','sefFault','sefa')
+hold off
+legend('sifa','sefa')
 % % savings=zeros(4,no_traces);
 % % savings(1,:)=mean( Key_rank_ni(1:no_traces,:),2);
 % % savings(2,:)=mean (Key_rank_Eff(1:no_traces,:),2);
