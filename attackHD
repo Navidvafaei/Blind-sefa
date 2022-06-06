@@ -2,9 +2,9 @@ close all;
 load('s_box.mat');
 
 no_bits = 8;
-fb=2;%no.faulty bits
+fb=4;%no.faulty bits
 sigma = 1.5;
-no_traces = 1000;
+no_traces = 40000;
 range = 2^no_bits-1;
 
 K=0:range;
@@ -43,7 +43,7 @@ for k=K
                 Distribution_Faulty(hf+1, k+1) = Distribution_Faulty(hf+1, k+1) + pr_uni;
                 Distribution_Eff(hc+1, k+1) = Distribution_Eff(hc+1, k+1) + pr_uni;
                 Distribution_joint( hc+1, hf+1, k+1) = Distribution_joint( hc+1, hf+1, k+1) + (pr_uni);
-                Distribution_joint_HD( hc+1, hz+1, k+1) = Distribution_joint( hc+1, hz+1, k+1) + (pr_uni);
+                Distribution_joint_HD( hc+1, hz+1, k+1) = Distribution_joint_HD( hc+1, hz+1, k+1) + (pr_uni);
             end
         end
     end
@@ -141,7 +141,7 @@ for no_k=1:no_key
                         full_termj = term1j * term2j;
                         summation_joint = summation_joint + full_termj;
                         term1jHD = (1/sigma_c)*sqrt(2*pi) * exp(-0.5 * ((L(i) - h)/sigma_c)^2 ) * (1/sigma_f)*sqrt(2*pi) * exp(-0.5 * ((L_HD(i) - h_f)/sigma_f)^2 );
-                        term2jHD = Distribution_joint(h+1,h_f+1,k+1);
+                        term2jHD = Distribution_joint_HD(h+1,h_f+1,k+1);
                         full_termjHD = term1jHD * term2jHD;
                         summation_joint_HD = summation_joint_HD + full_termjHD;
                         
@@ -179,14 +179,14 @@ for no_k=1:no_key
 % max(score_Eff)-min(score_Eff)
 % max(score_joint)-min(score_joint)
 end
-% hold on
-% plot(mean( Key_rank_ineff(1:no_traces,:),2),'red','LineWidth',1)
-% % plot(mean (Key_rank_Eff(1:no_traces,:),2),'LineWidth',1)
+hold on
+plot(mean( Key_rank_ineff(1:no_traces,:),2),'red','LineWidth',1)
+% plot(mean (Key_rank_Eff(1:no_traces,:),2),'LineWidth',1)
 % plot( mean (Key_rank_Faulty(1:no_traces,:),2),'green','LineWidth',1)
-% plot( mean(Key_rank_joint(1:no_traces,:),2),'blue','LineWidth',1)
-% 
-% hold off
-% legend('sifa','sefFault','sefa')
+plot( mean(Key_rank_joint_HD(1:no_traces,:),2),'blue','LineWidth',1)
+
+hold off
+legend('sifa','sefa')
 % savings=zeros(4,no_traces);
 % savings(1,:)=mean( Key_rank_ineff(1:no_traces,:),2);
 % savings(2,:)=mean (Key_rank_Eff(1:no_traces,:),2);
