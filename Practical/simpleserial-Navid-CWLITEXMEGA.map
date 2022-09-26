@@ -1,0 +1,833 @@
+Archive member included to satisfy reference by file (symbol)
+
+c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/avrxmega6\libgcc.a(_exit.o)
+                              c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/../../../../avr/lib/avrxmega6/crtatxmega128d3.o (exit)
+c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/avrxmega6\libgcc.a(_copy_data.o)
+                              objdir/simpleserial-Navid.o (__do_copy_data)
+c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/avrxmega6\libgcc.a(_clear_bss.o)
+                              objdir/simpleserial.o (__do_clear_bss)
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+text             0x0000000000000000 0x0000000000100000 xr
+data             0x0000000000802000 0x000000000000ffa0 rw !x
+eeprom           0x0000000000810000 0x0000000000010000 rw !x
+fuse             0x0000000000820000 0x0000000000000006 rw !x
+lock             0x0000000000830000 0x0000000000000400 rw !x
+signature        0x0000000000840000 0x0000000000000400 rw !x
+user_signatures  0x0000000000850000 0x0000000000000400 rw !x
+*default*        0x0000000000000000 0xffffffffffffffff
+
+Linker script and memory map
+
+LOAD c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/../../../../avr/lib/avrxmega6/crtatxmega128d3.o
+LOAD objdir/simpleserial-Navid.o
+LOAD objdir/simpleserial.o
+LOAD objdir/XMEGA_AES_driver.o
+LOAD objdir/uart.o
+LOAD objdir/usart_driver.o
+LOAD objdir/xmega_hal.o
+LOAD c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/../../../../avr/lib/avrxmega6\libm.a
+START GROUP
+LOAD c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/avrxmega6\libgcc.a
+LOAD c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/../../../../avr/lib/avrxmega6\libm.a
+LOAD c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/../../../../avr/lib/avrxmega6\libc.a
+LOAD c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/../../../../avr/lib/avrxmega6\libatxmega128d3.a
+END GROUP
+                0x0000000000100000                __TEXT_REGION_LENGTH__ = DEFINED (__TEXT_REGION_LENGTH__)?__TEXT_REGION_LENGTH__:0x100000
+                0x000000000000ffa0                __DATA_REGION_LENGTH__ = DEFINED (__DATA_REGION_LENGTH__)?__DATA_REGION_LENGTH__:0xffa0
+                0x0000000000010000                __EEPROM_REGION_LENGTH__ = DEFINED (__EEPROM_REGION_LENGTH__)?__EEPROM_REGION_LENGTH__:0x10000
+                [0x0000000000000006]                __FUSE_REGION_LENGTH__ = DEFINED (__FUSE_REGION_LENGTH__)?__FUSE_REGION_LENGTH__:0x400
+                0x0000000000000400                __LOCK_REGION_LENGTH__ = DEFINED (__LOCK_REGION_LENGTH__)?__LOCK_REGION_LENGTH__:0x400
+                0x0000000000000400                __SIGNATURE_REGION_LENGTH__ = DEFINED (__SIGNATURE_REGION_LENGTH__)?__SIGNATURE_REGION_LENGTH__:0x400
+                0x0000000000000400                __USER_SIGNATURE_REGION_LENGTH__ = DEFINED (__USER_SIGNATURE_REGION_LENGTH__)?__USER_SIGNATURE_REGION_LENGTH__:0x400
+
+.hash
+ *(.hash)
+
+.dynsym
+ *(.dynsym)
+
+.dynstr
+ *(.dynstr)
+
+.gnu.version
+ *(.gnu.version)
+
+.gnu.version_d
+ *(.gnu.version_d)
+
+.gnu.version_r
+ *(.gnu.version_r)
+
+.rel.init
+ *(.rel.init)
+
+.rela.init
+ *(.rela.init)
+
+.rel.text
+ *(.rel.text)
+ *(.rel.text.*)
+ *(.rel.gnu.linkonce.t*)
+
+.rela.text
+ *(.rela.text)
+ *(.rela.text.*)
+ *(.rela.gnu.linkonce.t*)
+
+.rel.fini
+ *(.rel.fini)
+
+.rela.fini
+ *(.rela.fini)
+
+.rel.rodata
+ *(.rel.rodata)
+ *(.rel.rodata.*)
+ *(.rel.gnu.linkonce.r*)
+
+.rela.rodata
+ *(.rela.rodata)
+ *(.rela.rodata.*)
+ *(.rela.gnu.linkonce.r*)
+
+.rel.data
+ *(.rel.data)
+ *(.rel.data.*)
+ *(.rel.gnu.linkonce.d*)
+
+.rela.data
+ *(.rela.data)
+ *(.rela.data.*)
+ *(.rela.gnu.linkonce.d*)
+
+.rel.ctors
+ *(.rel.ctors)
+
+.rela.ctors
+ *(.rela.ctors)
+
+.rel.dtors
+ *(.rel.dtors)
+
+.rela.dtors
+ *(.rela.dtors)
+
+.rel.got
+ *(.rel.got)
+
+.rela.got
+ *(.rela.got)
+
+.rel.bss
+ *(.rel.bss)
+
+.rela.bss
+ *(.rela.bss)
+
+.rel.plt
+ *(.rel.plt)
+
+.rela.plt
+ *(.rela.plt)
+
+.text           0x0000000000000000      0x840
+ *(.vectors)
+ .vectors       0x0000000000000000      0x1c8 c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/../../../../avr/lib/avrxmega6/crtatxmega128d3.o
+                0x0000000000000000                __vector_default
+                0x0000000000000000                __vectors
+ *(.vectors)
+ *(.progmem.gcc*)
+                0x00000000000001c8                . = ALIGN (0x2)
+                0x00000000000001c8                __trampolines_start = .
+ *(.trampolines)
+ .trampolines   0x00000000000001c8       0x18 linker stubs
+ *(.trampolines*)
+                0x00000000000001e0                __trampolines_end = .
+ *libprintf_flt.a:*(.progmem.data)
+ *libc.a:*(.progmem.data)
+ *(.progmem.*)
+                0x00000000000001e0                . = ALIGN (0x2)
+ *(.lowtext)
+ *(.lowtext*)
+                0x00000000000001e0                __ctors_start = .
+ *(.ctors)
+                0x00000000000001e0                __ctors_end = .
+                0x00000000000001e0                __dtors_start = .
+ *(.dtors)
+                0x00000000000001e0                __dtors_end = .
+ SORT_BY_NAME(*)(.ctors)
+ SORT_BY_NAME(*)(.dtors)
+ *(.init0)
+ .init0         0x00000000000001e0        0x0 c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/../../../../avr/lib/avrxmega6/crtatxmega128d3.o
+                0x00000000000001e0                __init
+ *(.init0)
+ *(.init1)
+ *(.init1)
+ *(.init2)
+ .init2         0x00000000000001e0       0x10 c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/../../../../avr/lib/avrxmega6/crtatxmega128d3.o
+ *(.init2)
+ *(.init3)
+ *(.init3)
+ *(.init4)
+ .init4         0x00000000000001f0       0x1a c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/avrxmega6\libgcc.a(_copy_data.o)
+                0x00000000000001f0                __do_copy_data
+ .init4         0x000000000000020a       0x10 c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/avrxmega6\libgcc.a(_clear_bss.o)
+                0x000000000000020a                __do_clear_bss
+ *(.init4)
+ *(.init5)
+ *(.init5)
+ *(.init6)
+ *(.init6)
+ *(.init7)
+ *(.init7)
+ *(.init8)
+ *(.init8)
+ *(.init9)
+ .init9         0x000000000000021a        0x8 c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/../../../../avr/lib/avrxmega6/crtatxmega128d3.o
+ *(.init9)
+ *(.text)
+ .text          0x0000000000000222        0x4 c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/../../../../avr/lib/avrxmega6/crtatxmega128d3.o
+                0x0000000000000222                __vector_38
+                0x0000000000000222                __vector_104
+                0x0000000000000222                __vector_22
+                0x0000000000000222                __vector_63
+                0x0000000000000222                __vector_28
+                0x0000000000000222                __vector_67
+                0x0000000000000222                __vector_1
+                0x0000000000000222                __vector_32
+                0x0000000000000222                __vector_75
+                0x0000000000000222                __vector_71
+                0x0000000000000222                __vector_91
+                0x0000000000000222                __vector_34
+                0x0000000000000222                __vector_62
+                0x0000000000000222                __vector_77
+                0x0000000000000222                __vector_102
+                0x0000000000000222                __vector_24
+                0x0000000000000222                __vector_12
+                0x0000000000000222                __vector_55
+                0x0000000000000222                __vector_69
+                0x0000000000000222                __vector_81
+                0x0000000000000222                __vector_90
+                0x0000000000000222                __vector_46
+                0x0000000000000222                __bad_interrupt
+                0x0000000000000222                __vector_72
+                0x0000000000000222                __vector_6
+                0x0000000000000222                __vector_110
+                0x0000000000000222                __vector_31
+                0x0000000000000222                __vector_92
+                0x0000000000000222                __vector_35
+                0x0000000000000222                __vector_78
+                0x0000000000000222                __vector_74
+                0x0000000000000222                __vector_39
+                0x0000000000000222                __vector_107
+                0x0000000000000222                __vector_3
+                0x0000000000000222                __vector_105
+                0x0000000000000222                __vector_98
+                0x0000000000000222                __vector_23
+                0x0000000000000222                __vector_68
+                0x0000000000000222                __vector_30
+                0x0000000000000222                __vector_73
+                0x0000000000000222                __vector_45
+                0x0000000000000222                __vector_25
+                0x0000000000000222                __vector_93
+                0x0000000000000222                __vector_61
+                0x0000000000000222                __vector_11
+                0x0000000000000222                __vector_54
+                0x0000000000000222                __vector_99
+                0x0000000000000222                __vector_13
+                0x0000000000000222                __vector_17
+                0x0000000000000222                __vector_19
+                0x0000000000000222                __vector_56
+                0x0000000000000222                __vector_7
+                0x0000000000000222                __vector_49
+                0x0000000000000222                __vector_41
+                0x0000000000000222                __vector_86
+                0x0000000000000222                __vector_100
+                0x0000000000000222                __vector_101
+                0x0000000000000222                __vector_64
+                0x0000000000000222                __vector_88
+                0x0000000000000222                __vector_109
+                0x0000000000000222                __vector_43
+                0x0000000000000222                __vector_27
+                0x0000000000000222                __vector_5
+                0x0000000000000222                __vector_113
+                0x0000000000000222                __vector_33
+                0x0000000000000222                __vector_76
+                0x0000000000000222                __vector_47
+                0x0000000000000222                __vector_52
+                0x0000000000000222                __vector_37
+                0x0000000000000222                __vector_95
+                0x0000000000000222                __vector_103
+                0x0000000000000222                __vector_96
+                0x0000000000000222                __vector_89
+                0x0000000000000222                __vector_108
+                0x0000000000000222                __vector_4
+                0x0000000000000222                __vector_44
+                0x0000000000000222                __vector_82
+                0x0000000000000222                __vector_106
+                0x0000000000000222                __vector_51
+                0x0000000000000222                __vector_9
+                0x0000000000000222                __vector_2
+                0x0000000000000222                __vector_21
+                0x0000000000000222                __vector_15
+                0x0000000000000222                __vector_66
+                0x0000000000000222                __vector_36
+                0x0000000000000222                __vector_79
+                0x0000000000000222                __vector_58
+                0x0000000000000222                __vector_70
+                0x0000000000000222                __vector_83
+                0x0000000000000222                __vector_29
+                0x0000000000000222                __vector_60
+                0x0000000000000222                __vector_40
+                0x0000000000000222                __vector_85
+                0x0000000000000222                __vector_94
+                0x0000000000000222                __vector_8
+                0x0000000000000222                __vector_26
+                0x0000000000000222                __vector_48
+                0x0000000000000222                __vector_112
+                0x0000000000000222                __vector_111
+                0x0000000000000222                __vector_80
+                0x0000000000000222                __vector_14
+                0x0000000000000222                __vector_84
+                0x0000000000000222                __vector_57
+                0x0000000000000222                __vector_53
+                0x0000000000000222                __vector_10
+                0x0000000000000222                __vector_50
+                0x0000000000000222                __vector_16
+                0x0000000000000222                __vector_59
+                0x0000000000000222                __vector_18
+                0x0000000000000222                __vector_97
+                0x0000000000000222                __vector_20
+                0x0000000000000222                __vector_42
+                0x0000000000000222                __vector_87
+                0x0000000000000222                __vector_65
+ .text          0x0000000000000226       0x3e objdir/simpleserial-Navid.o
+                0x0000000000000226                get_key
+                0x000000000000022a                SubBytes
+                0x0000000000000260                reset
+ .text          0x0000000000000264      0x3c8 objdir/simpleserial.o
+                0x0000000000000264                check_version
+                0x0000000000000268                ss_crc
+                0x0000000000000298                hex_decode
+                0x0000000000000322                simpleserial_addcmd_flags
+                0x000000000000036c                simpleserial_addcmd
+                0x0000000000000372                simpleserial_init
+                0x000000000000039c                simpleserial_put
+                0x00000000000003fa                ss_num_commands
+                0x0000000000000422                ss_get_commands
+                0x00000000000004a4                simpleserial_get
+ .text          0x000000000000062c        0x0 objdir/XMEGA_AES_driver.o
+ .text          0x000000000000062c       0x86 objdir/uart.o
+                0x000000000000062c                init_uart0
+                0x0000000000000654                input_ch_w_timeout_0
+                0x0000000000000696                input_ch_0
+                0x00000000000006a4                output_ch_0
+ .text          0x00000000000006b2      0x11c objdir/usart_driver.o
+                0x00000000000006b2                USART_InterruptDriver_Initialize
+                0x00000000000006c4                USART_InterruptDriver_DreInterruptLevel_Set
+                0x00000000000006ca                USART_TXBuffer_FreeSpace
+                0x00000000000006de                USART_TXBuffer_PutByte
+                0x0000000000000716                USART_RXBufferData_Available
+                0x0000000000000726                USART_RXBuffer_GetByte
+                0x000000000000073e                USART_RXComplete
+                0x0000000000000768                USART_DataRegEmpty
+                0x00000000000007a2                USART_NineBits_PutChar
+                0x00000000000007b8                USART_NineBits_GetChar
+ .text          0x00000000000007ce       0x2c objdir/xmega_hal.o
+                0x00000000000007ce                platform_init
+ .text          0x00000000000007fa        0x0 c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/avrxmega6\libgcc.a(_exit.o)
+ .text          0x00000000000007fa        0x0 c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/avrxmega6\libgcc.a(_copy_data.o)
+ .text          0x00000000000007fa        0x0 c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/avrxmega6\libgcc.a(_clear_bss.o)
+                0x00000000000007fa                . = ALIGN (0x2)
+ *(.text.*)
+ .text.startup  0x00000000000007fa       0x42 objdir/simpleserial-Navid.o
+                0x00000000000007fa                main
+ .text.libgcc.mul
+                0x000000000000083c        0x0 c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/avrxmega6\libgcc.a(_exit.o)
+ .text.libgcc.div
+                0x000000000000083c        0x0 c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/avrxmega6\libgcc.a(_exit.o)
+ .text.libgcc   0x000000000000083c        0x0 c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/avrxmega6\libgcc.a(_exit.o)
+ .text.libgcc.prologue
+                0x000000000000083c        0x0 c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/avrxmega6\libgcc.a(_exit.o)
+ .text.libgcc.builtins
+                0x000000000000083c        0x0 c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/avrxmega6\libgcc.a(_exit.o)
+ .text.libgcc.fmul
+                0x000000000000083c        0x0 c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/avrxmega6\libgcc.a(_exit.o)
+ .text.libgcc.fixed
+                0x000000000000083c        0x0 c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/avrxmega6\libgcc.a(_exit.o)
+ .text.libgcc.mul
+                0x000000000000083c        0x0 c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/avrxmega6\libgcc.a(_copy_data.o)
+ .text.libgcc.div
+                0x000000000000083c        0x0 c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/avrxmega6\libgcc.a(_copy_data.o)
+ .text.libgcc   0x000000000000083c        0x0 c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/avrxmega6\libgcc.a(_copy_data.o)
+ .text.libgcc.prologue
+                0x000000000000083c        0x0 c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/avrxmega6\libgcc.a(_copy_data.o)
+ .text.libgcc.builtins
+                0x000000000000083c        0x0 c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/avrxmega6\libgcc.a(_copy_data.o)
+ .text.libgcc.fmul
+                0x000000000000083c        0x0 c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/avrxmega6\libgcc.a(_copy_data.o)
+ .text.libgcc.fixed
+                0x000000000000083c        0x0 c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/avrxmega6\libgcc.a(_copy_data.o)
+ .text.libgcc.mul
+                0x000000000000083c        0x0 c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/avrxmega6\libgcc.a(_clear_bss.o)
+ .text.libgcc.div
+                0x000000000000083c        0x0 c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/avrxmega6\libgcc.a(_clear_bss.o)
+ .text.libgcc   0x000000000000083c        0x0 c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/avrxmega6\libgcc.a(_clear_bss.o)
+ .text.libgcc.prologue
+                0x000000000000083c        0x0 c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/avrxmega6\libgcc.a(_clear_bss.o)
+ .text.libgcc.builtins
+                0x000000000000083c        0x0 c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/avrxmega6\libgcc.a(_clear_bss.o)
+ .text.libgcc.fmul
+                0x000000000000083c        0x0 c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/avrxmega6\libgcc.a(_clear_bss.o)
+ .text.libgcc.fixed
+                0x000000000000083c        0x0 c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/avrxmega6\libgcc.a(_clear_bss.o)
+                0x000000000000083c                . = ALIGN (0x2)
+ *(.fini9)
+ .fini9         0x000000000000083c        0x0 c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/avrxmega6\libgcc.a(_exit.o)
+                0x000000000000083c                _exit
+                0x000000000000083c                exit
+ *(.fini9)
+ *(.fini8)
+ *(.fini8)
+ *(.fini7)
+ *(.fini7)
+ *(.fini6)
+ *(.fini6)
+ *(.fini5)
+ *(.fini5)
+ *(.fini4)
+ *(.fini4)
+ *(.fini3)
+ *(.fini3)
+ *(.fini2)
+ *(.fini2)
+ *(.fini1)
+ *(.fini1)
+ *(.fini0)
+ .fini0         0x000000000000083c        0x4 c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/avrxmega6\libgcc.a(_exit.o)
+ *(.fini0)
+ *(.hightext)
+ *(.hightext*)
+ *(.progmemx.*)
+                0x0000000000000840                . = ALIGN (0x2)
+ *(.jumptables)
+ *(.jumptables*)
+                0x0000000000000840                _etext = .
+
+.data           0x0000000000802000      0x110 load address 0x0000000000000840
+                0x0000000000802000                PROVIDE (__data_start = .)
+ *(.data)
+ .data          0x0000000000802000        0x0 c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/../../../../avr/lib/avrxmega6/crtatxmega128d3.o
+ .data          0x0000000000802000      0x100 objdir/simpleserial-Navid.o
+                0x0000000000802000                sbox
+ .data          0x0000000000802100        0x0 objdir/simpleserial.o
+ .data          0x0000000000802100        0x0 objdir/XMEGA_AES_driver.o
+ .data          0x0000000000802100        0x0 objdir/uart.o
+ .data          0x0000000000802100        0x0 objdir/usart_driver.o
+ .data          0x0000000000802100        0x0 objdir/xmega_hal.o
+ .data          0x0000000000802100        0x0 c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/avrxmega6\libgcc.a(_exit.o)
+ .data          0x0000000000802100        0x0 c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/avrxmega6\libgcc.a(_copy_data.o)
+ .data          0x0000000000802100        0x0 c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/avrxmega6\libgcc.a(_clear_bss.o)
+ *(.data*)
+ *(.gnu.linkonce.d*)
+ *(.rodata)
+ .rodata        0x0000000000802100       0x10 objdir/simpleserial.o
+ *(.rodata*)
+ *(.gnu.linkonce.r*)
+                0x0000000000802110                . = ALIGN (0x2)
+                0x0000000000802110                _edata = .
+                0x0000000000802110                PROVIDE (__data_end = .)
+
+.bss            0x0000000000802110       0x62
+                0x0000000000802110                PROVIDE (__bss_start = .)
+ *(.bss)
+ .bss           0x0000000000802110        0x0 c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/../../../../avr/lib/avrxmega6/crtatxmega128d3.o
+ .bss           0x0000000000802110        0x0 objdir/simpleserial-Navid.o
+ .bss           0x0000000000802110       0x62 objdir/simpleserial.o
+ .bss           0x0000000000802172        0x0 objdir/XMEGA_AES_driver.o
+ .bss           0x0000000000802172        0x0 objdir/uart.o
+ .bss           0x0000000000802172        0x0 objdir/usart_driver.o
+ .bss           0x0000000000802172        0x0 objdir/xmega_hal.o
+ .bss           0x0000000000802172        0x0 c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/avrxmega6\libgcc.a(_exit.o)
+ .bss           0x0000000000802172        0x0 c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/avrxmega6\libgcc.a(_copy_data.o)
+ .bss           0x0000000000802172        0x0 c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/avrxmega6\libgcc.a(_clear_bss.o)
+ *(.bss*)
+ *(COMMON)
+                0x0000000000802172                PROVIDE (__bss_end = .)
+                0x0000000000000840                __data_load_start = LOADADDR (.data)
+                0x0000000000000950                __data_load_end = (__data_load_start + SIZEOF (.data))
+
+.noinit         0x0000000000802172        0x0
+                [!provide]                        PROVIDE (__noinit_start = .)
+ *(.noinit*)
+                [!provide]                        PROVIDE (__noinit_end = .)
+                0x0000000000802172                _end = .
+                [!provide]                        PROVIDE (__heap_start = .)
+
+.eeprom         0x0000000000810000        0x0
+ *(.eeprom*)
+                0x0000000000810000                __eeprom_end = .
+
+.fuse
+ *(.fuse)
+ *(.lfuse)
+ *(.hfuse)
+ *(.efuse)
+
+.lock
+ *(.lock*)
+
+.signature
+ *(.signature*)
+
+.stab
+ *(.stab)
+
+.stabstr
+ *(.stabstr)
+
+.stab.excl
+ *(.stab.excl)
+
+.stab.exclstr
+ *(.stab.exclstr)
+
+.stab.index
+ *(.stab.index)
+
+.stab.indexstr
+ *(.stab.indexstr)
+
+.comment        0x0000000000000000       0x12
+ *(.comment)
+ .comment       0x0000000000000000       0x12 objdir/simpleserial-Navid.o
+                                         0x13 (size before relaxing)
+ .comment       0x0000000000000012       0x13 objdir/simpleserial.o
+ .comment       0x0000000000000012       0x13 objdir/XMEGA_AES_driver.o
+ .comment       0x0000000000000012       0x13 objdir/uart.o
+ .comment       0x0000000000000012       0x13 objdir/usart_driver.o
+ .comment       0x0000000000000012       0x13 objdir/xmega_hal.o
+
+.note.gnu.avr.deviceinfo
+                0x0000000000000000       0x40
+ .note.gnu.avr.deviceinfo
+                0x0000000000000000       0x40 c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/../../../../avr/lib/avrxmega6/crtatxmega128d3.o
+
+.note.gnu.build-id
+ *(.note.gnu.build-id)
+
+.debug
+ *(.debug)
+
+.line
+ *(.line)
+
+.debug_srcinfo
+ *(.debug_srcinfo)
+
+.debug_sfnames
+ *(.debug_sfnames)
+
+.debug_aranges  0x0000000000000000      0x108
+ *(.debug_aranges)
+ .debug_aranges
+                0x0000000000000000       0x28 objdir/simpleserial-Navid.o
+ .debug_aranges
+                0x0000000000000028       0x20 objdir/simpleserial.o
+ .debug_aranges
+                0x0000000000000048       0x20 objdir/uart.o
+ .debug_aranges
+                0x0000000000000068       0x20 objdir/usart_driver.o
+ .debug_aranges
+                0x0000000000000088       0x20 objdir/xmega_hal.o
+ .debug_aranges
+                0x00000000000000a8       0x20 c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/avrxmega6\libgcc.a(_exit.o)
+ .debug_aranges
+                0x00000000000000c8       0x20 c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/avrxmega6\libgcc.a(_copy_data.o)
+ .debug_aranges
+                0x00000000000000e8       0x20 c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/avrxmega6\libgcc.a(_clear_bss.o)
+
+.debug_pubnames
+ *(.debug_pubnames)
+
+.debug_info     0x0000000000000000     0x3a31
+ *(.debug_info .gnu.linkonce.wi.*)
+ .debug_info    0x0000000000000000     0x2168 c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/../../../../avr/lib/avrxmega6/crtatxmega128d3.o
+ .debug_info    0x0000000000002168      0x49b objdir/simpleserial-Navid.o
+ .debug_info    0x0000000000002603      0x7d6 objdir/simpleserial.o
+ .debug_info    0x0000000000002dd9      0x3d9 objdir/uart.o
+ .debug_info    0x00000000000031b2      0x642 objdir/usart_driver.o
+ .debug_info    0x00000000000037f4      0x1cb objdir/xmega_hal.o
+ .debug_info    0x00000000000039bf       0x26 c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/avrxmega6\libgcc.a(_exit.o)
+ .debug_info    0x00000000000039e5       0x26 c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/avrxmega6\libgcc.a(_copy_data.o)
+ .debug_info    0x0000000000003a0b       0x26 c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/avrxmega6\libgcc.a(_clear_bss.o)
+
+.debug_abbrev   0x0000000000000000     0x28a5
+ *(.debug_abbrev)
+ .debug_abbrev  0x0000000000000000     0x1fa2 c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/../../../../avr/lib/avrxmega6/crtatxmega128d3.o
+ .debug_abbrev  0x0000000000001fa2      0x1de objdir/simpleserial-Navid.o
+ .debug_abbrev  0x0000000000002180      0x278 objdir/simpleserial.o
+ .debug_abbrev  0x00000000000023f8      0x152 objdir/uart.o
+ .debug_abbrev  0x000000000000254a      0x254 objdir/usart_driver.o
+ .debug_abbrev  0x000000000000279e       0xcb objdir/xmega_hal.o
+ .debug_abbrev  0x0000000000002869       0x14 c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/avrxmega6\libgcc.a(_exit.o)
+ .debug_abbrev  0x000000000000287d       0x14 c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/avrxmega6\libgcc.a(_copy_data.o)
+ .debug_abbrev  0x0000000000002891       0x14 c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/avrxmega6\libgcc.a(_clear_bss.o)
+
+.debug_line     0x0000000000000000     0x1954
+ *(.debug_line .debug_line.* .debug_line_end)
+ .debug_line    0x0000000000000000       0x1d c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/../../../../avr/lib/avrxmega6/crtatxmega128d3.o
+ .debug_line    0x000000000000001d      0x2c5 objdir/simpleserial-Navid.o
+ .debug_line    0x00000000000002e2      0x9c8 objdir/simpleserial.o
+ .debug_line    0x0000000000000caa        0x0 objdir/XMEGA_AES_driver.o
+ .debug_line    0x0000000000000caa      0x2af objdir/uart.o
+ .debug_line    0x0000000000000f59      0x6ac objdir/usart_driver.o
+ .debug_line    0x0000000000001605      0x1c6 objdir/xmega_hal.o
+ .debug_line    0x00000000000017cb       0x61 c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/avrxmega6\libgcc.a(_exit.o)
+ .debug_line    0x000000000000182c       0xa3 c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/avrxmega6\libgcc.a(_copy_data.o)
+ .debug_line    0x00000000000018cf       0x85 c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/avrxmega6\libgcc.a(_clear_bss.o)
+
+.debug_frame    0x0000000000000000      0x2d8
+ *(.debug_frame)
+ .debug_frame   0x0000000000000000       0x54 objdir/simpleserial-Navid.o
+ .debug_frame   0x0000000000000054      0x12c objdir/simpleserial.o
+ .debug_frame   0x0000000000000180       0x64 objdir/uart.o
+ .debug_frame   0x00000000000001e4       0xd0 objdir/usart_driver.o
+ .debug_frame   0x00000000000002b4       0x24 objdir/xmega_hal.o
+
+.debug_str      0x0000000000000000     0x1f5a
+ *(.debug_str)
+ .debug_str     0x0000000000000000     0x1644 c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/../../../../avr/lib/avrxmega6/crtatxmega128d3.o
+ .debug_str     0x0000000000001644      0x2d7 objdir/simpleserial-Navid.o
+                                        0x310 (size before relaxing)
+ .debug_str     0x000000000000191b       0xf1 objdir/simpleserial.o
+                                        0x2dd (size before relaxing)
+ .debug_str     0x0000000000001a0c       0x22 objdir/XMEGA_AES_driver.o
+                                        0x136 (size before relaxing)
+ .debug_str     0x0000000000001a2e      0x157 objdir/uart.o
+                                        0x3f0 (size before relaxing)
+ .debug_str     0x0000000000001b85      0x25d objdir/usart_driver.o
+                                        0x48c (size before relaxing)
+ .debug_str     0x0000000000001de2      0x114 objdir/xmega_hal.o
+                                        0x2c2 (size before relaxing)
+ .debug_str     0x0000000000001ef6       0x64 c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/avrxmega6\libgcc.a(_exit.o)
+ .debug_str     0x0000000000001f5a       0x64 c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/avrxmega6\libgcc.a(_copy_data.o)
+ .debug_str     0x0000000000001f5a       0x64 c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/avrxmega6\libgcc.a(_clear_bss.o)
+
+.debug_loc      0x0000000000000000      0xdd6
+ *(.debug_loc)
+ .debug_loc     0x0000000000000000       0xfb objdir/simpleserial-Navid.o
+ .debug_loc     0x00000000000000fb      0x784 objdir/simpleserial.o
+ .debug_loc     0x000000000000087f       0xd5 objdir/uart.o
+ .debug_loc     0x0000000000000954      0x482 objdir/usart_driver.o
+
+.debug_macinfo
+ *(.debug_macinfo)
+
+.debug_weaknames
+ *(.debug_weaknames)
+
+.debug_funcnames
+ *(.debug_funcnames)
+
+.debug_typenames
+ *(.debug_typenames)
+
+.debug_varnames
+ *(.debug_varnames)
+
+.debug_pubtypes
+ *(.debug_pubtypes)
+
+.debug_ranges   0x0000000000000000       0xa8
+ *(.debug_ranges)
+ .debug_ranges  0x0000000000000000       0x18 objdir/simpleserial-Navid.o
+ .debug_ranges  0x0000000000000018       0x78 objdir/simpleserial.o
+ .debug_ranges  0x0000000000000090       0x18 objdir/usart_driver.o
+
+.debug_macro
+ *(.debug_macro)
+
+.debug_addr
+ *(.debug_addr)
+OUTPUT(simpleserial-Navid-CWLITEXMEGA.elf elf32-avr)
+LOAD linker stubs
+
+Cross Reference Table
+
+Symbol                                            File
+SubBytes                                          objdir/simpleserial-Navid.o
+USART_DataRegEmpty                                objdir/usart_driver.o
+USART_InterruptDriver_DreInterruptLevel_Set       objdir/usart_driver.o
+USART_InterruptDriver_Initialize                  objdir/usart_driver.o
+USART_NineBits_GetChar                            objdir/usart_driver.o
+USART_NineBits_PutChar                            objdir/usart_driver.o
+USART_RXBufferData_Available                      objdir/usart_driver.o
+USART_RXBuffer_GetByte                            objdir/usart_driver.o
+USART_RXComplete                                  objdir/usart_driver.o
+USART_TXBuffer_FreeSpace                          objdir/usart_driver.o
+USART_TXBuffer_PutByte                            objdir/usart_driver.o
+__FUSE_REGION_LENGTH__                            c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/../../../../avr/lib/avrxmega6/crtatxmega128d3.o
+__bad_interrupt                                   c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/../../../../avr/lib/avrxmega6/crtatxmega128d3.o
+__bss_end                                         c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/avrxmega6\libgcc.a(_clear_bss.o)
+__bss_start                                       c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/avrxmega6\libgcc.a(_clear_bss.o)
+__data_end                                        c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/avrxmega6\libgcc.a(_copy_data.o)
+__data_load_start                                 c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/avrxmega6\libgcc.a(_copy_data.o)
+__data_start                                      c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/avrxmega6\libgcc.a(_copy_data.o)
+__do_clear_bss                                    c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/avrxmega6\libgcc.a(_clear_bss.o)
+                                                  objdir/simpleserial.o
+__do_copy_data                                    c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/avrxmega6\libgcc.a(_copy_data.o)
+                                                  objdir/simpleserial.o
+                                                  objdir/simpleserial-Navid.o
+__heap_end                                        c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/../../../../avr/lib/avrxmega6/crtatxmega128d3.o
+__init                                            c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/../../../../avr/lib/avrxmega6/crtatxmega128d3.o
+__stack                                           c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/../../../../avr/lib/avrxmega6/crtatxmega128d3.o
+__vector_1                                        c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/../../../../avr/lib/avrxmega6/crtatxmega128d3.o
+__vector_10                                       c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/../../../../avr/lib/avrxmega6/crtatxmega128d3.o
+__vector_100                                      c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/../../../../avr/lib/avrxmega6/crtatxmega128d3.o
+__vector_101                                      c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/../../../../avr/lib/avrxmega6/crtatxmega128d3.o
+__vector_102                                      c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/../../../../avr/lib/avrxmega6/crtatxmega128d3.o
+__vector_103                                      c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/../../../../avr/lib/avrxmega6/crtatxmega128d3.o
+__vector_104                                      c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/../../../../avr/lib/avrxmega6/crtatxmega128d3.o
+__vector_105                                      c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/../../../../avr/lib/avrxmega6/crtatxmega128d3.o
+__vector_106                                      c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/../../../../avr/lib/avrxmega6/crtatxmega128d3.o
+__vector_107                                      c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/../../../../avr/lib/avrxmega6/crtatxmega128d3.o
+__vector_108                                      c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/../../../../avr/lib/avrxmega6/crtatxmega128d3.o
+__vector_109                                      c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/../../../../avr/lib/avrxmega6/crtatxmega128d3.o
+__vector_11                                       c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/../../../../avr/lib/avrxmega6/crtatxmega128d3.o
+__vector_110                                      c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/../../../../avr/lib/avrxmega6/crtatxmega128d3.o
+__vector_111                                      c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/../../../../avr/lib/avrxmega6/crtatxmega128d3.o
+__vector_112                                      c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/../../../../avr/lib/avrxmega6/crtatxmega128d3.o
+__vector_113                                      c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/../../../../avr/lib/avrxmega6/crtatxmega128d3.o
+__vector_12                                       c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/../../../../avr/lib/avrxmega6/crtatxmega128d3.o
+__vector_13                                       c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/../../../../avr/lib/avrxmega6/crtatxmega128d3.o
+__vector_14                                       c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/../../../../avr/lib/avrxmega6/crtatxmega128d3.o
+__vector_15                                       c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/../../../../avr/lib/avrxmega6/crtatxmega128d3.o
+__vector_16                                       c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/../../../../avr/lib/avrxmega6/crtatxmega128d3.o
+__vector_17                                       c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/../../../../avr/lib/avrxmega6/crtatxmega128d3.o
+__vector_18                                       c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/../../../../avr/lib/avrxmega6/crtatxmega128d3.o
+__vector_19                                       c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/../../../../avr/lib/avrxmega6/crtatxmega128d3.o
+__vector_2                                        c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/../../../../avr/lib/avrxmega6/crtatxmega128d3.o
+__vector_20                                       c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/../../../../avr/lib/avrxmega6/crtatxmega128d3.o
+__vector_21                                       c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/../../../../avr/lib/avrxmega6/crtatxmega128d3.o
+__vector_22                                       c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/../../../../avr/lib/avrxmega6/crtatxmega128d3.o
+__vector_23                                       c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/../../../../avr/lib/avrxmega6/crtatxmega128d3.o
+__vector_24                                       c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/../../../../avr/lib/avrxmega6/crtatxmega128d3.o
+__vector_25                                       c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/../../../../avr/lib/avrxmega6/crtatxmega128d3.o
+__vector_26                                       c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/../../../../avr/lib/avrxmega6/crtatxmega128d3.o
+__vector_27                                       c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/../../../../avr/lib/avrxmega6/crtatxmega128d3.o
+__vector_28                                       c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/../../../../avr/lib/avrxmega6/crtatxmega128d3.o
+__vector_29                                       c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/../../../../avr/lib/avrxmega6/crtatxmega128d3.o
+__vector_3                                        c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/../../../../avr/lib/avrxmega6/crtatxmega128d3.o
+__vector_30                                       c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/../../../../avr/lib/avrxmega6/crtatxmega128d3.o
+__vector_31                                       c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/../../../../avr/lib/avrxmega6/crtatxmega128d3.o
+__vector_32                                       c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/../../../../avr/lib/avrxmega6/crtatxmega128d3.o
+__vector_33                                       c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/../../../../avr/lib/avrxmega6/crtatxmega128d3.o
+__vector_34                                       c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/../../../../avr/lib/avrxmega6/crtatxmega128d3.o
+__vector_35                                       c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/../../../../avr/lib/avrxmega6/crtatxmega128d3.o
+__vector_36                                       c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/../../../../avr/lib/avrxmega6/crtatxmega128d3.o
+__vector_37                                       c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/../../../../avr/lib/avrxmega6/crtatxmega128d3.o
+__vector_38                                       c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/../../../../avr/lib/avrxmega6/crtatxmega128d3.o
+__vector_39                                       c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/../../../../avr/lib/avrxmega6/crtatxmega128d3.o
+__vector_4                                        c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/../../../../avr/lib/avrxmega6/crtatxmega128d3.o
+__vector_40                                       c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/../../../../avr/lib/avrxmega6/crtatxmega128d3.o
+__vector_41                                       c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/../../../../avr/lib/avrxmega6/crtatxmega128d3.o
+__vector_42                                       c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/../../../../avr/lib/avrxmega6/crtatxmega128d3.o
+__vector_43                                       c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/../../../../avr/lib/avrxmega6/crtatxmega128d3.o
+__vector_44                                       c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/../../../../avr/lib/avrxmega6/crtatxmega128d3.o
+__vector_45                                       c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/../../../../avr/lib/avrxmega6/crtatxmega128d3.o
+__vector_46                                       c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/../../../../avr/lib/avrxmega6/crtatxmega128d3.o
+__vector_47                                       c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/../../../../avr/lib/avrxmega6/crtatxmega128d3.o
+__vector_48                                       c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/../../../../avr/lib/avrxmega6/crtatxmega128d3.o
+__vector_49                                       c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/../../../../avr/lib/avrxmega6/crtatxmega128d3.o
+__vector_5                                        c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/../../../../avr/lib/avrxmega6/crtatxmega128d3.o
+__vector_50                                       c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/../../../../avr/lib/avrxmega6/crtatxmega128d3.o
+__vector_51                                       c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/../../../../avr/lib/avrxmega6/crtatxmega128d3.o
+__vector_52                                       c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/../../../../avr/lib/avrxmega6/crtatxmega128d3.o
+__vector_53                                       c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/../../../../avr/lib/avrxmega6/crtatxmega128d3.o
+__vector_54                                       c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/../../../../avr/lib/avrxmega6/crtatxmega128d3.o
+__vector_55                                       c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/../../../../avr/lib/avrxmega6/crtatxmega128d3.o
+__vector_56                                       c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/../../../../avr/lib/avrxmega6/crtatxmega128d3.o
+__vector_57                                       c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/../../../../avr/lib/avrxmega6/crtatxmega128d3.o
+__vector_58                                       c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/../../../../avr/lib/avrxmega6/crtatxmega128d3.o
+__vector_59                                       c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/../../../../avr/lib/avrxmega6/crtatxmega128d3.o
+__vector_6                                        c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/../../../../avr/lib/avrxmega6/crtatxmega128d3.o
+__vector_60                                       c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/../../../../avr/lib/avrxmega6/crtatxmega128d3.o
+__vector_61                                       c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/../../../../avr/lib/avrxmega6/crtatxmega128d3.o
+__vector_62                                       c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/../../../../avr/lib/avrxmega6/crtatxmega128d3.o
+__vector_63                                       c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/../../../../avr/lib/avrxmega6/crtatxmega128d3.o
+__vector_64                                       c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/../../../../avr/lib/avrxmega6/crtatxmega128d3.o
+__vector_65                                       c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/../../../../avr/lib/avrxmega6/crtatxmega128d3.o
+__vector_66                                       c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/../../../../avr/lib/avrxmega6/crtatxmega128d3.o
+__vector_67                                       c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/../../../../avr/lib/avrxmega6/crtatxmega128d3.o
+__vector_68                                       c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/../../../../avr/lib/avrxmega6/crtatxmega128d3.o
+__vector_69                                       c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/../../../../avr/lib/avrxmega6/crtatxmega128d3.o
+__vector_7                                        c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/../../../../avr/lib/avrxmega6/crtatxmega128d3.o
+__vector_70                                       c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/../../../../avr/lib/avrxmega6/crtatxmega128d3.o
+__vector_71                                       c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/../../../../avr/lib/avrxmega6/crtatxmega128d3.o
+__vector_72                                       c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/../../../../avr/lib/avrxmega6/crtatxmega128d3.o
+__vector_73                                       c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/../../../../avr/lib/avrxmega6/crtatxmega128d3.o
+__vector_74                                       c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/../../../../avr/lib/avrxmega6/crtatxmega128d3.o
+__vector_75                                       c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/../../../../avr/lib/avrxmega6/crtatxmega128d3.o
+__vector_76                                       c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/../../../../avr/lib/avrxmega6/crtatxmega128d3.o
+__vector_77                                       c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/../../../../avr/lib/avrxmega6/crtatxmega128d3.o
+__vector_78                                       c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/../../../../avr/lib/avrxmega6/crtatxmega128d3.o
+__vector_79                                       c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/../../../../avr/lib/avrxmega6/crtatxmega128d3.o
+__vector_8                                        c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/../../../../avr/lib/avrxmega6/crtatxmega128d3.o
+__vector_80                                       c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/../../../../avr/lib/avrxmega6/crtatxmega128d3.o
+__vector_81                                       c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/../../../../avr/lib/avrxmega6/crtatxmega128d3.o
+__vector_82                                       c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/../../../../avr/lib/avrxmega6/crtatxmega128d3.o
+__vector_83                                       c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/../../../../avr/lib/avrxmega6/crtatxmega128d3.o
+__vector_84                                       c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/../../../../avr/lib/avrxmega6/crtatxmega128d3.o
+__vector_85                                       c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/../../../../avr/lib/avrxmega6/crtatxmega128d3.o
+__vector_86                                       c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/../../../../avr/lib/avrxmega6/crtatxmega128d3.o
+__vector_87                                       c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/../../../../avr/lib/avrxmega6/crtatxmega128d3.o
+__vector_88                                       c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/../../../../avr/lib/avrxmega6/crtatxmega128d3.o
+__vector_89                                       c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/../../../../avr/lib/avrxmega6/crtatxmega128d3.o
+__vector_9                                        c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/../../../../avr/lib/avrxmega6/crtatxmega128d3.o
+__vector_90                                       c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/../../../../avr/lib/avrxmega6/crtatxmega128d3.o
+__vector_91                                       c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/../../../../avr/lib/avrxmega6/crtatxmega128d3.o
+__vector_92                                       c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/../../../../avr/lib/avrxmega6/crtatxmega128d3.o
+__vector_93                                       c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/../../../../avr/lib/avrxmega6/crtatxmega128d3.o
+__vector_94                                       c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/../../../../avr/lib/avrxmega6/crtatxmega128d3.o
+__vector_95                                       c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/../../../../avr/lib/avrxmega6/crtatxmega128d3.o
+__vector_96                                       c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/../../../../avr/lib/avrxmega6/crtatxmega128d3.o
+__vector_97                                       c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/../../../../avr/lib/avrxmega6/crtatxmega128d3.o
+__vector_98                                       c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/../../../../avr/lib/avrxmega6/crtatxmega128d3.o
+__vector_99                                       c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/../../../../avr/lib/avrxmega6/crtatxmega128d3.o
+__vector_default                                  c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/../../../../avr/lib/avrxmega6/crtatxmega128d3.o
+__vectors                                         c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/../../../../avr/lib/avrxmega6/crtatxmega128d3.o
+_exit                                             c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/avrxmega6\libgcc.a(_exit.o)
+check_version                                     objdir/simpleserial.o
+exit                                              c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/avrxmega6\libgcc.a(_exit.o)
+                                                  c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/../../../../avr/lib/avrxmega6/crtatxmega128d3.o
+get_key                                           objdir/simpleserial-Navid.o
+hex_decode                                        objdir/simpleserial.o
+init_uart0                                        objdir/uart.o
+                                                  objdir/simpleserial-Navid.o
+input_ch_0                                        objdir/uart.o
+                                                  objdir/simpleserial.o
+input_ch_w_timeout_0                              objdir/uart.o
+main                                              objdir/simpleserial-Navid.o
+                                                  c:/users/admin/chipwh~1/cw/home/portable/avrgcc/avr-gcc-10.1.0-x64-windows/bin/../lib/gcc/avr/10.1.0/../../../../avr/lib/avrxmega6/crtatxmega128d3.o
+output_ch_0                                       objdir/uart.o
+                                                  objdir/simpleserial.o
+platform_init                                     objdir/xmega_hal.o
+                                                  objdir/simpleserial-Navid.o
+reset                                             objdir/simpleserial-Navid.o
+sbox                                              objdir/simpleserial-Navid.o
+simpleserial_addcmd                               objdir/simpleserial.o
+                                                  objdir/simpleserial-Navid.o
+simpleserial_addcmd_flags                         objdir/simpleserial.o
+simpleserial_get                                  objdir/simpleserial.o
+                                                  objdir/simpleserial-Navid.o
+simpleserial_init                                 objdir/simpleserial.o
+                                                  objdir/simpleserial-Navid.o
+simpleserial_put                                  objdir/simpleserial.o
+                                                  objdir/simpleserial-Navid.o
+ss_crc                                            objdir/simpleserial.o
+ss_get_commands                                   objdir/simpleserial.o
+ss_num_commands                                   objdir/simpleserial.o
