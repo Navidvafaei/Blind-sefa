@@ -6,3 +6,4 @@ The improved base attack is based on the Improved blind side channel attack http
 
 Fault distribution folder is written for the function of distribution 
 
+[Drawing9.pdf](https://github.com/Navidvafaei/Blind-sefa/files/9779220/Drawing9.pdf)
