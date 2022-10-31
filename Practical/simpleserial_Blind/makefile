@@ -30,11 +30,11 @@
 
 # Target file name (without extension).
 # This is the base name of the compiled .hex file.
-TARGET = simpleserial-Navid
+TARGET = simpleserial-Blind
 
 # List C source files here.
 # Header files (.h) are automatically pulled in.
-SRC += simpleserial-Navid.c
+SRC += simpleserial-Blind.c
 
 # -----------------------------------------------------------------------------
 EXTRA_OPTS = NO_EXTRA_OPTS
