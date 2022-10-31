@@ -67,7 +67,7 @@ end
 ```
 This fault value will be bitand in the last round of encryption with the following code:
 
- 
+--- 
 
 
 ## Practical_Attack
