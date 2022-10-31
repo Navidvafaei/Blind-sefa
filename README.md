@@ -14,7 +14,7 @@ This repository contains the documentation of our simulations and Expriments on 
 
 **Initialization**
 
-```
+```matlab
  close all;
 load('s_box.mat');
 
