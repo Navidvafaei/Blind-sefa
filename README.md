@@ -1,5 +1,7 @@
-# Blind-sefa
+# Blind-SEFA
 
+
+This repository contains the documentation of our simulations and Expriments on Blind-Sefa
 
 
 
