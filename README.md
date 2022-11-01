@@ -328,10 +328,8 @@ It is worth mentioning that, we can inject faults at the input of AES at 10th ro
 
 
 ### Template-Profiling
-```jupyter
+```python
 {
-"cells": [
-  {
    "cell_type": "code",
    "execution_count": null,
    "metadata": {},
@@ -412,9 +410,8 @@ It is worth mentioning that, we can inject faults at the input of AES at 10th ro
     "                data1[ni,:,j] =[sbox_out[0],S_out[0]]\n",
     "                ni=ni+1\n",
     "                coll_n[j,1]=ni"
-    }
    ]
-}
+  }
 ```
 ### Online-Attack
 
