@@ -14,14 +14,17 @@ This repository contains the documentation of our simulations and Expriments on 
 
 
 ## Simulation
-In this section, the simulation code is explained
+In this section, the simulation code is explained. We apply **Blind-SEFA** to AES cipher and retrive key without any direct access of plaintext and ciphertext.
+
+[AES code](https://nevonprojects.com/aes-source-code-inmatlab/)  is written by J. J. Buchholz, Hochschule Bremen, buchholz@hs-bremen.de
+ We also used some part of [Improved blind side channel code](kpcrypto.net)
 
 ### Initialization
 
 ```Sigma``` shows the standard deviation of gaussian noise ```fb``` shows number of bit taht the attacker wants to inject fault.
 
 ```matlab
- close all;
+close all;
 load('s_box.mat');
 
 no_bits =8;
@@ -108,7 +111,7 @@ It should be mentioned that in this formula hf is calculated once for SEFA1 and 
 
       end
 
-```matlab
+```
 The general code of the key recovery process for noiseless and nosiy scnarios for SIFA,SEFA1 and SEFA2 is as following:
 
 ```matlab
@@ -237,6 +240,8 @@ plot( mean(Key_rank_sefa2(1:no_traces,:),2),'blue','LineWidth',1)
 --- 
 
 ## Practical_Attack
+
+we used [chipwhisperer](https://github.com/newaetech/chipwhisperer) For the practical attack with the following setup:
 
  <img src="https://user-images.githubusercontent.com/30938963/199026183-dd10d4a7-6fd3-4711-8d65-10e594688304.png" alt="Your image title" width="700"/>
 
