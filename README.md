@@ -74,6 +74,8 @@ end
 
 ```
 For example , distribution of SEFA2 for key=57 is depicted as following:
+
+
 <img src="https://user-images.githubusercontent.com/30938963/199102411-c1b7bb50-c791-44b0-b475-91bbf6be8725.png" alt="Your image title" width="400"/>
 
 
