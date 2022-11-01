@@ -357,10 +357,10 @@ scope.adc.timeout = 0.1
 ---
 ```python
 RUNS = 400,
-data1 = np.zeros(((RUNS 16 256)))  
-data2= np.zeros(((RUNS 16 256)))  
-data3= np.zeros(((RUNS 16 256)))  
-data4= np.zeros(((RUNS 16 256)))  
+data1 = np.zeros(((RUNS, 16, 256)))  
+data2= np.zeros(((RUNS, 16, 256)))  
+data3= np.zeros(((RUNS, 16, 256)))  
+data4= np.zeros(((RUNS, 16, 256)))  
 S_out=np.zeros(16)  
 coll_n=np.zeros((256 2))  
 gc.display_stats()  
@@ -420,12 +420,12 @@ for glitch_settings in gc.glitch_values():
         if sbox_out[0] != S_out[0]:  
                 gc.add(\success\  (scope.glitch.width  scope.glitch.offset  scope.glitch.ext_offset))  
                 if sbox_out[1] !=[] :#and sbox_out[1] !=0  
-                    data2[ne : j] =[sbox_out[0] S_out[0]]  
+                    data2[ne, :, j] =[sbox_out[0] S_out[0]]  
                     ne=ne+1  
                     coll_n[j 0]=ne  
             else:  
                 gc.add(\normal\  (scope.glitch.width  scope.glitch.offset  scope.glitch.ext_offset))  
-                data1[ni : j] =[sbox_out[0] S_out[0]]  
+                data1[ni ,: ,j] =[sbox_out[0] S_out[0]]  
                 ni=ni+1  
                 coll_n[j 1]=ni
 ```
