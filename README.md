@@ -328,92 +328,111 @@ It is worth mentioning that, we can inject faults at the input of AES at 10th ro
 
 
 ### Template-Profiling
+Here, for each input of S-Box, we inject fault to generate fault distribution.
+
+**Glitch Setup**
+
 ```python
-{
-   "cell_type": "code",
-   "execution_count": null,
-   "metadata": {},
-   "outputs": [],
-   "source": [
-    "data1 = np.zeros(((RUNS,16,256)))\n",
-    "data2= np.zeros(((RUNS,16,256)))\n",
-    "data3= np.zeros(((RUNS,16,256)))\n",
-    "data4= np.zeros(((RUNS,16,256)))\n",
-    "\n",
-    "S_out=np.zeros(16)\n",
-    "coll_n=np.zeros((256,2))\n",
-    "gc.display_stats()\n",
-    "for glitch_settings in gc.glitch_values():\n",
-    "    scope.glitch.width = glitch_settings[0]\n",
-    "    scope.glitch.offset = glitch_settings[1]\n",
-    "    scope.glitch.ext_offset = glitch_settings[2]\n",
-    "    reset_cnt = 0\n",
-    "    valid_run = 1\n",
-    "    key, text = ktp.next()\n",
-    "    for j in range (256):\n",
-    "        ne=0\n",
-    "        ni=0\n",
-    "        text[0]=j\n",
-    "        for i in range(RUNS):\n",
-    "            for i in range (16):\n",
-    "                S_out[i]=((sbox[text[i]]))\n",
-    "            S_out=S_out.astype(int)\n",
-    "            trace = cw.capture_trace(scope, target, text, key)\n",
-    "            if scope.adc.state:\n",
-    "                gc.add(\"reset\", (scope.glitch.width, scope.glitch.offset, scope.glitch.ext_offset))\n",
-    "                reboot_flush()\n",
-    "                reset_cnt += 1\n",
-    "                if reset_cnt >= reset_num:\n",
-    "                    valid_run = 0\n",
-    "                    break\n",
-    "                continue\n",
-    "\n",
-    "            try:\n",
-    "                trace = cw.capture_trace(scope, target, text, key)\n",
-    "            except:\n",
-    "                gc.add(\"reset\", (scope.glitch.width, scope.glitch.offset, scope.glitch.ext_offset))\n",
-    "                reboot_flush()\n",
-    "                reset_cnt += 1\n",
-    "                if reset_cnt >= reset_num:\n",
-    "                    valid_run = 0\n",
-    "                    break\n",
-    "                continue\n",
-    "\n",
-    "            if trace is None:\n",
-    "                gc.add(\"reset\", (scope.glitch.width, scope.glitch.offset, scope.glitch.ext_offset))\n",
-    "                reboot_flush()\n",
-    "                reset_cnt += 1\n",
-    "                if reset_cnt >= reset_num:\n",
-    "                    valid_run = 0\n",
-    "                    break\n",
-    "                continue\n",
-    "\n",
-    "            ciphertext = trace.textout\n",
-    "            if ciphertext is None:\n",
-    "                gc.add(\"reset\", (scope.glitch.width, scope.glitch.offset, scope.glitch.ext_offset))\n",
-    "                reboot_flush()\n",
-    "                reset_cnt += 1\n",
-    "                if reset_cnt >= reset_num:\n",
-    "                    valid_run = 0\n",
-    "                    break\n",
-    "                continue\n",
-    "            sbox_in = text\n",
-    "            sbox_out = ciphertext \n",
-    "        if sbox_out[0] != S_out[0]:\n",
-    "                gc.add(\"success\", (scope.glitch.width, scope.glitch.offset, scope.glitch.ext_offset))\n",
-    "                if sbox_out[1] !=[] :#and sbox_out[1] !=0\n",
-    "                    data2[ne,:,j] =[sbox_out[0],S_out[0]]\n",
-    "                    ne=ne+1\n",
-    "                    coll_n[j,0]=ne\n",
-    "            else:\n",
-    "                gc.add(\"normal\", (scope.glitch.width, scope.glitch.offset, scope.glitch.ext_offset))\n",
-    "                data1[ni,:,j] =[sbox_out[0],S_out[0]]\n",
-    "                ni=ni+1\n",
-    "                coll_n[j,1]=ni"
-   ]
-  }
+import time
+import chipwhisperer.common.results.glitch as glitch
+
+def reboot_flush():            
+    scope.io.pdic = False
+    time.sleep(0.1)
+    scope.io.pdic = \high_z\
+    time.sleep(0.1)
+    target.flush()
+gc = glitch.GlitchController(groups=[\success\, \reset\, \normal\], parameters=[\width\, \offset\, \ext_offset\])
+
+gc.set_range(\width\, 5, 5)
+gc.set_range(\offset\, -10, -10)
+gc.set_range(\ext_offset\, 355, 355)#10362#10562
+scope.glitch.clk_src = \clkgen\ # set glitch input clock
+scope.glitch.output = \clock_xor\ # glitch_out = clk ^ glitch
+scope.glitch.trigger_src = \ext_single\ # glitch only after scope.arm() called
+scope.io.hs2 = \glitch\  # output glitch_out on the clock line
+scope.adc.timeout = 0.1
+```
+
+```python
+RUNS = 400,
+data1 = np.zeros(((RUNS 16 256)))  
+data2= np.zeros(((RUNS 16 256)))  
+data3= np.zeros(((RUNS 16 256)))  
+data4= np.zeros(((RUNS 16 256)))  
+S_out=np.zeros(16)  
+coll_n=np.zeros((256 2))  
+gc.display_stats()  
+for glitch_settings in gc.glitch_values():  
+    scope.glitch.width = glitch_settings[0]  
+    scope.glitch.offset = glitch_settings[1]  
+    scope.glitch.ext_offset = glitch_settings[2]  
+    reset_cnt = 0  
+    valid_run = 1  
+    key  text = ktp.next()  
+    for j in range (256):  
+        ne=0  
+        ni=0  
+        text[0]=j  
+        for i in range(RUNS):  
+            for i in range (16):  
+                S_out[i]=((sbox[text[i]]))  
+            S_out=S_out.astype(int)  
+            trace = cw.capture_trace(scope  target  text  key)  
+            if scope.adc.state:  
+                gc.add(\reset\  (scope.glitch.width  scope.glitch.offset  scope.glitch.ext_offset))  
+                reboot_flush()  
+                reset_cnt += 1  
+                if reset_cnt >= reset_num:  
+                    valid_run = 0  
+                    break  
+                continue  
+            try:  
+                trace = cw.capture_trace(scope  target  text  key)  
+            except:  
+                gc.add(\reset\  (scope.glitch.width  scope.glitch.offset  scope.glitch.ext_offset))  
+                reboot_flush()  
+                reset_cnt += 1  
+                if reset_cnt >= reset_num:  
+                    valid_run = 0  
+                    break  
+                continue  
+            if trace is None:  
+                gc.add(\reset\  (scope.glitch.width  scope.glitch.offset  scope.glitch.ext_offset))  
+                reboot_flush()  
+                reset_cnt += 1  
+                if reset_cnt >= reset_num:  
+                    valid_run = 0  
+                    break  
+                continue  
+            ciphertext = trace.textout  
+            if ciphertext is None:  
+                gc.add(\reset\  (scope.glitch.width  scope.glitch.offset  scope.glitch.ext_offset))  
+                reboot_flush()  
+                reset_cnt += 1  
+                if reset_cnt >= reset_num:  
+                    valid_run = 0  
+                    break  
+                continue  
+            sbox_in = text  
+            sbox_out = ciphertext   
+        if sbox_out[0] != S_out[0]:  
+                gc.add(\success\  (scope.glitch.width  scope.glitch.offset  scope.glitch.ext_offset))  
+                if sbox_out[1] !=[] :#and sbox_out[1] !=0  
+                    data2[ne : j] =[sbox_out[0] S_out[0]]  
+                    ne=ne+1  
+                    coll_n[j 0]=ne  
+            else:  
+                gc.add(\normal\  (scope.glitch.width  scope.glitch.offset  scope.glitch.ext_offset))  
+                data1[ni : j] =[sbox_out[0] S_out[0]]  
+                ni=ni+1  
+                coll_n[j 1]=ni
 ```
 ### Online-Attack
+Same as profiling phase, we inject fault with the aformentioned setup to generate same distribution for fault. Then by using Simulated HW, we can recover the key.
+
+
+
 
 ### Simulated-HW
 
