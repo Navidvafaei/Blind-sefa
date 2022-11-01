@@ -18,7 +18,7 @@ This repository contains the documentation of our simulations and Expriments on 
 ## Simulation
 In this section, the simulation code is explained. 
 
-[AES code](https://nevonprojects.com/aes-source-code-inmatlab/)  is written by J. J. Buchholz, Hochschule Bremen, buchholz@hs-bremen.de
+[AES code](https://nevonprojects.com/aes-source-code-inmatlab/)  is written by J. J. Buchholz, Hochschule Bremen, buchholz@hs-bremen.de.
  We also used some part of [Improved blind side channel code](kpcrypto.net)
 
 ### Initialization
