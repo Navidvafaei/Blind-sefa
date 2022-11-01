@@ -71,7 +71,7 @@ end
 
 ```
 For example , distribution of SEFA2 for key=57 is depicted as following:
-<img src="https://user-images.githubusercontent.com/30938963/199102411-c1b7bb50-c791-44b0-b475-91bbf6be8725.png" alt="Your image title" width="700"/>
+<img src="https://user-images.githubusercontent.com/30938963/199102411-c1b7bb50-c791-44b0-b475-91bbf6be8725.png" alt="Your image title" width="400"/>
 
 
 
@@ -90,6 +90,26 @@ L = Hamming(c) + normrnd(0,sigma,no_traces,1);
 Where ```L``` is a Hamming weight of Correct output which is added by gaussian noise.
 
 In the following code, attacker uses Maximum likeliood to recover the key in a noisy enviroment:
+It should be mentioned that in this formula hf is calculated once for SEFA1 and also it is used as distance of HW(c+c') for SEFA2
+```matlab
+
+  for hc = A
+      for hf = B 
+          if hc==0 
+              term1f = (1/sigma_f)*sqrt(2*pi) * exp(-0.5 * ((L_F(i) - hf)/sigma_f)^2 );
+              term2f = Distribution_SEFA1(hf+1,k+1);
+              full_termf = term1f * term2f;
+              summation_SEFA1 = summation_SEFA1 + full_termf;
+          end
+          term1jHD = (1/sigma_c)*sqrt(2*pi) * exp(-0.5 * ((L(i) - hc)/sigma_c)^2 ) * (1/sigma_f)*sqrt(2*pi) * exp(-0.5 * ((L_HD(i) - hf)/sigma_f)^2 );
+          term2jHD = Distribution_SEFA2(hc+1,hf+1,k+1);
+          full_termjHD = term1jHD * term2jHD;
+          summation_SEFA2 = summation_SEFA2 + full_termjHD;
+
+      end
+
+```matlab
+The general code of the key recovery process for noiseless and nosiy scnarios for SIFA,SEFA1 and SEFA2 is as following:
 
 ```matlab
 
@@ -128,7 +148,7 @@ for no_k=1:no_key
     score_SEFA2 = zeros(cardK,1);
     ni=0;
     ne=0;
-    est_sifa=ones(256,1);%esti,ation of SIFA for noiseless secnario
+    est_sifa=ones(256,1);%estimation of SIFA for noiseless secnario
     est_sefa1=ones(256,1);
     est_sefa2=ones(256,1);
     for i=1:no_traces
@@ -156,8 +176,8 @@ for no_k=1:no_key
                     est_sefa1(k+1)=log(Distribution_SEFA1(Hamming(c_faulty(i))+1,k+1))+est_sefa1(k+1);
                     est_sefa2(k+1)=log(Distribution_SEFA2(Hamming(c(i))+1, Hamming(HD(i))+1,k+1))+est_sefa2(k+1);
                 for hc = A
-                    for hf = B 
-                        if hc==0
+                    for hf = B %in this formula hf is calculated once for SEFA1 and also can be  distance of HW(c+c')
+                        if hc==0 
                             term1f = (1/sigma_f)*sqrt(2*pi) * exp(-0.5 * ((L_F(i) - hf)/sigma_f)^2 );
                             term2f = Distribution_SEFA1(hf+1,k+1);
                             full_termf = term1f * term2f;
@@ -193,7 +213,7 @@ for no_k=1:no_key
 
 end
 ```
-
+We can plot the mean of Key_rank as following:
 
 ```matlab
 
@@ -215,7 +235,6 @@ plot( mean(Key_rank_sefa2(1:no_traces,:),2),'blue','LineWidth',1)
 
 
 --- 
-%in this formula hf is calculated once for SEFA1 and also can be  distance of HW(c+c')
 
 ## Practical_Attack
 
