@@ -434,7 +434,12 @@ Same as profiling phase, we inject fault with the aformentioned setup to generat
 
 ### Simulated-HW
 
+Key-recovery for **noiseless scenario** is depicted as following:
+
+ <img src="https://user-images.githubusercontent.com/30938963/199211768-56ac72a0-6439-45fd-b414-bfd662c28f68.png" alt="Your image title" width="400"/>
+
 Here, by using faulty and correct output, HW can be simulated.
+
 
 ```matlab
 load('inv_s_box.mat');
