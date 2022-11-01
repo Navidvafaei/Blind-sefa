@@ -23,7 +23,7 @@ In this section, the simulation code is explained.
 
 ### Initialization
 
-```matlab Sigma``` shows the standard deviation of gaussian noise ```fb``` shows number of bit taht the attacker wants to inject fault.
+``` Sigma``` shows the standard deviation of gaussian noise ```fb``` shows number of bit taht the attacker wants to inject fault.
 
 ```matlab
 close all;
