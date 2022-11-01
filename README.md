@@ -331,7 +331,7 @@ It is worth mentioning that, we can inject faults at the input of AES at 10th ro
 Here, for each input of S-Box, we inject fault to generate fault distribution.
 
 **Glitch Setup**
-
+---
 ```python
 import time
 import chipwhisperer.common.results.glitch as glitch
@@ -354,6 +354,7 @@ scope.io.hs2 = \glitch\  # output glitch_out on the clock line
 scope.adc.timeout = 0.1
 ```
 **Profiling**
+---
 ```python
 RUNS = 400,
 data1 = np.zeros(((RUNS 16 256)))  
@@ -433,6 +434,7 @@ Same as profiling phase, we inject fault with the aformentioned setup to generat
 
 ### Simulated-HW
 
+Here, by using faulty and correct output, HW can be simulated.
 
 ```matlab
 load('inv_s_box.mat');
