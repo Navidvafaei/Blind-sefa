@@ -10,6 +10,7 @@ This repository contains the documentation of our simulations and Expriments on 
   * [Fault Profiling](https://github.com/Navidvafaei/Blind-sefa#fault-profiling)
   * [Key Recovery Process](https://github.com/Navidvafaei/Blind-sefa#key-recovery-process)
 * [Practical_Attacks](https://github.com/Navidvafaei/Blind-sefa#practical_attack)
+  * [Template_Profiling]()
   * [Simulated_HW](https://github.com/Navidvafaei/Blind-sefa#simulated_hw)
 
 
@@ -247,9 +248,11 @@ we used [chipwhisperer](https://github.com/newaetech/chipwhisperer) For the prac
 
  <img src="https://user-images.githubusercontent.com/30938963/199026183-dd10d4a7-6fd3-4711-8d65-10e594688304.png" alt="Your image title" width="700"/>
 
+### Template-Profiling
 
+### Online-Attack
 
-### Simulated_HW
+### Simulated-HW
 
 
 
