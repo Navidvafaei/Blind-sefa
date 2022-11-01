@@ -245,11 +245,11 @@ plot( mean(Key_rank_sefa2(1:no_traces,:),2),'blue','LineWidth',1)
 
 ## Practical_Attack
 
-we used [chipwhisperer](https://github.com/newaetech/chipwhisperer) For the practical attack with the following setup:
+we used [chipwhisperer](https://rtfm.newae.com) For the practical attack with the following setup (required library can be found at the [Chipwhisperer Github](https://github.com/newaetech/chipwhisperer)):
 
  <img src="https://user-images.githubusercontent.com/30938963/199026183-dd10d4a7-6fd3-4711-8d65-10e594688304.png" alt="Your image title" width="700"/>
 
-
+Here, we inject faults in sbox by using trigger high and low.
 ```C
 
 #include "hal.h"
@@ -291,7 +291,6 @@ uint8_t get_key(uint8_t *k, uint8_t len)
 
 uint8_t SubBytes(uint8_t* state, uint8_t len)
 {
-//   uint8_t state;
   uint8_t i;
         for(i = 0; i < 16; ++i)
         { 
@@ -306,7 +305,6 @@ uint8_t SubBytes(uint8_t* state, uint8_t len)
 
 uint8_t reset(uint8_t *x, uint8_t len)
 {
-    // Reset key here if needed
     return 0x00;
 }
 
@@ -326,9 +324,95 @@ int main(void)
         simpleserial_get();
 }
 ```
+It is worth mentioning that, we can inject faults at the input of AES at 10th round, but for the sake of simplicity we just inject fault in the input of 10th round.
 
 
 ### Template-Profiling
+
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "data1 = np.zeros(((RUNS,16,256)))\n",
+    "data2= np.zeros(((RUNS,16,256)))\n",
+    "data3= np.zeros(((RUNS,16,256)))\n",
+    "data4= np.zeros(((RUNS,16,256)))\n",
+    "\n",
+    "S_out=np.zeros(16)\n",
+    "coll_n=np.zeros((256,2))\n",
+    "gc.display_stats()\n",
+    "for glitch_settings in gc.glitch_values():\n",
+    "    scope.glitch.width = glitch_settings[0]\n",
+    "    scope.glitch.offset = glitch_settings[1]\n",
+    "    scope.glitch.ext_offset = glitch_settings[2]\n",
+    "    reset_cnt = 0\n",
+    "    valid_run = 1\n",
+    "    key, text = ktp.next()\n",
+    "    for j in range (256):\n",
+    "        ne=0\n",
+    "        ni=0\n",
+    "        text[0]=j\n",
+    "        for i in range(RUNS):\n",
+    "            for i in range (16):\n",
+    "                S_out[i]=((sbox[text[i]]))\n",
+    "            S_out=S_out.astype(int)\n",
+    "            trace = cw.capture_trace(scope, target, text, key)\n",
+    "            if scope.adc.state:\n",
+    "                gc.add(\"reset\", (scope.glitch.width, scope.glitch.offset, scope.glitch.ext_offset))\n",
+    "                reboot_flush()\n",
+    "                reset_cnt += 1\n",
+    "                if reset_cnt >= reset_num:\n",
+    "                    valid_run = 0\n",
+    "                    break\n",
+    "                continue\n",
+    "\n",
+    "            try:\n",
+    "                trace = cw.capture_trace(scope, target, text, key)\n",
+    "            except:\n",
+    "                gc.add(\"reset\", (scope.glitch.width, scope.glitch.offset, scope.glitch.ext_offset))\n",
+    "                reboot_flush()\n",
+    "                reset_cnt += 1\n",
+    "                if reset_cnt >= reset_num:\n",
+    "                    valid_run = 0\n",
+    "                    break\n",
+    "                continue\n",
+    "\n",
+    "            if trace is None:\n",
+    "                gc.add(\"reset\", (scope.glitch.width, scope.glitch.offset, scope.glitch.ext_offset))\n",
+    "                reboot_flush()\n",
+    "                reset_cnt += 1\n",
+    "                if reset_cnt >= reset_num:\n",
+    "                    valid_run = 0\n",
+    "                    break\n",
+    "                continue\n",
+    "\n",
+    "            ciphertext = trace.textout\n",
+    "            if ciphertext is None:\n",
+    "                gc.add(\"reset\", (scope.glitch.width, scope.glitch.offset, scope.glitch.ext_offset))\n",
+    "                reboot_flush()\n",
+    "                reset_cnt += 1\n",
+    "                if reset_cnt >= reset_num:\n",
+    "                    valid_run = 0\n",
+    "                    break\n",
+    "                continue\n",
+    "            sbox_in = text\n",
+    "            sbox_out = ciphertext \n",
+    "        if sbox_out[0] != S_out[0]:\n",
+    "                gc.add(\"success\", (scope.glitch.width, scope.glitch.offset, scope.glitch.ext_offset))\n",
+    "                if sbox_out[1] !=[] :#and sbox_out[1] !=0\n",
+    "                    data2[ne,:,j] =[sbox_out[0],S_out[0]]\n",
+    "                    ne=ne+1\n",
+    "                    coll_n[j,0]=ne\n",
+    "            else:\n",
+    "                gc.add(\"normal\", (scope.glitch.width, scope.glitch.offset, scope.glitch.ext_offset))\n",
+    "                data1[ni,:,j] =[sbox_out[0],S_out[0]]\n",
+    "                ni=ni+1\n",
+    "                coll_n[j,1]=ni"
+   ]
+  }
+
 
 ### Online-Attack
 
