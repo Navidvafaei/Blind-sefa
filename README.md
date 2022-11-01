@@ -375,7 +375,7 @@ for glitch_settings in gc.glitch_values():
         ne=0  
         ni=0  
         text[0]=j  
-        for i in range(RUNS):  
+        for r in range(RUNS):  
             for i in range (16):  
                 S_out[i]=((sbox[text[i]]))  
             S_out=S_out.astype(int)  
