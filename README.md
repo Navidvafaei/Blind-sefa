@@ -3,7 +3,7 @@
 
 This repository contains the documentation of our simulations and Expriments on Blind-SEFA.We apply **Blind-SEFA** to AES cipher and retrive key without any direct access of plaintext and ciphertext.
 
-<img src="https://user-images.githubusercontent.com/30938963/199470100-81a3244d-20be-4b32-af66-840ce330aaf9.png" alt="Your image title" width="400"/>
+<img src="https://user-images.githubusercontent.com/30938963/199470100-81a3244d-20be-4b32-af66-840ce330aaf9.png" alt="Your image title" width="700"/>
 
 
 ---
